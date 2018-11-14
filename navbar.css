@@ -7,6 +7,7 @@
   background-color: rgba(0,0,0,.7) !important;
 }
 */
+
 .bg-ultra-dark{
   background-color: #121414;
 }
@@ -21,12 +22,11 @@
   color:orange !important;
 }
 .headings-container{
-  background-image: linear-gradient(#121414 30%, #F9E89B);
+  background-image: linear-gradient(#121414 25%, #21303D);
 }
 .headings-item-side{
-  background-color: white;
   color: #3A4042;
-  border-radius: 25px;
+  border-radius: 20px;
 }
 .headings-item-center{
   color: white;
@@ -34,9 +34,9 @@
 /*Featurette CSS*/
 .btn-secondary{
   border: none;
-  border-radius: 25px;
+  border-radius: 20px;
   padding: 16px;
-  background-color: #3A4042;
+  background-color: #EA3C33;
 }
 .featurette-divider {
   margin: 2.25rem 0; /* Space out the Bootstrap <hr> more */
@@ -48,7 +48,6 @@
   line-height: 1;
   letter-spacing: -.05rem;
 }
-
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
