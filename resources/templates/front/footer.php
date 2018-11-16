@@ -9,7 +9,7 @@
       <div class="col-md-4 col-sm-4">
         <div class="mb-3 img-logo">
           <a href="#">
-            <img src="img/logo.png" alt="Skittler's Eatery" media-simple="true">
+            <img src="<?php echo IMG_PATH;?>/logo/logo.png" alt="Skittler's Eatery" media-simple="true">
           </a>
         </div>
         <p class="mbr-fonts-style foot-logo display-7">

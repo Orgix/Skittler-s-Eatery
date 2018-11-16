@@ -53,7 +53,7 @@
             <p class="lead">Don't falter! Skittler's Eatery burgers are made with love and care from us to you! We use fresh materials , from our home-made buns to the 100% beef burger that will change your definition of joy!</p>
           </div>
           <div class="col-lg-5">
-            <img class="featurette-image img-fluid mx-auto rounded" src="img/burger-900x600.jpg" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto rounded" src="<?php echo IMG_PATH;?>/burger-900x600.jpg" alt="Generic placeholder image">
           </div>
         </div>
 
@@ -66,7 +66,7 @@
               in our menu. Take a look!</p>
           </div>
           <div class="col-lg-5 order-lg-1">
-            <img class="featurette-image img-fluid mx-auto rounded" src="img/pizza-900x600.jpg" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto rounded" src="<?php echo IMG_PATH;?>/pizza-900x600.jpg" alt="Generic placeholder image">
           </div>
         </div>
 
@@ -80,7 +80,7 @@
               There is no holding back. Impress us with your very own combination!</p>
           </div>
           <div class="col-lg-5">
-            <img class="featurette-image img-fluid mx-auto rounded" src="img/sandwich-900x600.jpg" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto rounded" src="<?php echo IMG_PATH;?>/sandwich-900x600.jpg" alt="Generic placeholder image">
           </div>
         </div>
 
@@ -96,7 +96,7 @@
           </div>
 
           <div class="col-lg-5 order-lg-1">
-            <img class="featurette-image img-fluid mx-auto rounded" src="img/soyblaki-900x600.jpg" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto rounded" src="<?php echo IMG_PATH;?>/soyblaki-900x600.jpg" alt="Generic placeholder image">
           </div>
         </div>
 
@@ -168,7 +168,7 @@
           <div class="card-body">
             <div class="row d-flex h-100">
               <div class="col-4 col-md-5">
-                <img src="img/map.png" class="img-fluid">
+                <img src="<?php echo IMG_PATH;?>/map.png" class="img-fluid">
               </div>
               <div class="col-8 col-md-7 text-center justify-content-center align-self-center">
                 <p>
