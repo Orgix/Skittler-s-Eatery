@@ -1,17 +1,17 @@
-<?php 
+<?php
 /********************************HELPER FUNCTIONS*************************/
-/* This is the place to all the helper functions that will just make your code look  
-cleaner. For code readability, make sure to add any helper function before the 
+/* This is the place to all the helper functions that will just make your code look
+cleaner. For code readability, make sure to add any helper function before the
 ending comment. Cheers!
 
 */
-function set_message($msg){ 
-/* function that is used both for saving error cases or a welcome message. It is combined with display_message(). 
+function set_message($msg){
+/* function that is used both for saving error cases or a welcome message. It is combined with display_message().
 It saves messages into the global $_SESSION and presents the result wherever the function display_message() is called.
 This function is used both on register and login actions, but in the send_messsage() function as well.
 
-EX. on unsuccessful login => set_message("The combination of username and password is incorrect."); 
-Then after redirection the display_message() is used to notify the user about the  error*/  
+EX. on unsuccessful login => set_message("The combination of username and password is incorrect.");
+Then after redirection the display_message() is used to notify the user about the  error*/
 	if(!empty($msg)){
 		$_SESSION['message']= $msg;
 	}else{
@@ -38,8 +38,8 @@ function query($sql){ //query execution without needing to write $connection ove
 	return mysqli_query($connection,$sql);
 }
 
-function confirm($query){ /* function that checks if there's a problem 
-with the query that was sent. It's mostly used for debugging purposes, but 
+function confirm($query){ /* function that checks if there's a problem
+with the query that was sent. It's mostly used for debugging purposes, but
 if modified it can actually attack the error to a log file , where the
 administrator can have it displayed. For debugging we just keep the classic
 if clause to make sure our queries work adequately!*/
@@ -47,15 +47,15 @@ if clause to make sure our queries work adequately!*/
 	global $connection;
 	if(!$query){
 		die("QUERY FAILED: ". mysqli_error($connection));
-	}else{ /* this else is completely optional. It can be ommited after 
-		testing is done. Else it can be appended as a response to a log file*/ 
+	}else{ /* this else is completely optional. It can be ommited after
+		testing is done. Else it can be appended as a response to a log file*/
 		// echo "query succeeded~!";
 	}
 }
 
 function escape_string($string){ //function that helps escape the string, more clearly written.
 
-	global $connection; 
+	global $connection;
 	return mysqli_real_escape_string($connection, $string);
 }
 
@@ -71,12 +71,13 @@ function count_rows($query){
 
 /********************************* PRODUCTS FUNCTIONS ************************/
 function get_products(){// function that fetches all the products from DB, then presents them using heredoc
-	
+
 	$query = query("SELECT * FROM products");
 	confirm($query);
 
-	while($row = fetch_array($query)){ 
+	while($row = fetch_array($query)){
 		$short_desc = substr($row['product_short_desc'],0,50)."...";
+		/*remodel for MENU*/
 		$product = <<<DELIMETER
 
  			<div class="col-sm-4 col-lg-4 col-md-4">
@@ -89,7 +90,7 @@ function get_products(){// function that fetches all the products from DB, then 
                         <p>{$short_desc}</p>
                          <a class="btn btn-primary" target="_blank" href="../resources/cart.php?add={$row['product_id']}" target='blank'>Add to cart</a>
                     </div>
-                    
+
                 </div>
             </div>
 DELIMETER;
@@ -97,21 +98,11 @@ DELIMETER;
 	}
 
 }
-function get_extra_panel(){
 
-echo <<<STR
-	<div class="col-sm-4 col-lg-4 col-md-4">
-                        <h4><a href="#">Like this template?</a>
-                        </h4>
-                        <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
-                       
-                    </div>
-STR;
-
-}
 function get_categories(){
+	/*Alter category.*/
 	$query = query("SELECT * FROM categories");
-	
+
 
 	confirm($query);
 
@@ -159,11 +150,11 @@ START;
 /*************************************************Users functions********************************************/
 
 function login_user(){
-	
+
 	if(isset($_POST['submit'])){
 		$username = escape_string($_POST['username']);
 		$password = escape_string($_POST['password']);
-		
+
 		$query = query("SELECT username,user_password FROM users WHERE username='{$username}' AND user_password='{$password}'  ");
 
 		confirm($query);
@@ -172,7 +163,7 @@ function login_user(){
 			set_message("The combination of username and password is wrong!");
 			redirect("login.php");
 		}else{
-			$_SESSION['username'] = $username;	
+			$_SESSION['username'] = $username;
 			redirect("admin/");
 		}
 
@@ -195,13 +186,13 @@ function send_message(){ // SETTING ON PHP.INI .... otherwise the email will nev
 		$headers .= 'From: {$email}'.'\r\n';
 		$headers .= 'Content-type: text/html; charset=utf-8'.'\r\n';
 
-		$result = mail($to, $subject, $message, $headers); 
-		
+		$result = mail($to, $subject, $message, $headers);
+
 		if(!$result){
 			set_message("Could not send the email");
-			
+
 		}else{
-			
+
 			set_message("Email sent!");
 
 		}
@@ -236,8 +227,7 @@ function send_message(){ // SETTING ON PHP.INI .... otherwise the email will nev
 //             echo "Entei";
 //             echo $product;
 //         }
-        
+
 //     }
 
 ?>
-
