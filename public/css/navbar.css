@@ -86,3 +86,23 @@ p a:hover{
 .soc-item a:hover{
   color:  #FF8039;
 }
+
+/*card with transparent background and bottom border on footer
+under md only*/
+@media (max-width:768px){
+  #accordion .card{
+    background-color:transparent;
+  }
+  #accordion .card-header{
+    border-bottom:1px solid white;
+  }
+}
+/*toggle icon on footer's accordion*/
+.accordion .card-header:after {
+    font-family: 'Font Awesome 5 Free';
+    content: "\f0d8";
+    float: right;
+}
+.accordion .card-header.collapsed:after {
+    content: "\f0d7";
+}
