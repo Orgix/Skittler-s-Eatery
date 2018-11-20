@@ -94,6 +94,7 @@ under md only*/
   }
   #accordion .card-header{
     border-bottom:1px solid white;
+    cursor:pointer;
   }
 }
 /*toggle icon on footer's accordion*/
