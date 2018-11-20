@@ -22,7 +22,7 @@ const copyContent = () =>{
   collapse1.innerHTML = content[0];
   collapse2.innerHTML = content[1];
   hasContent = true;
-  console.log("voalah")
+  
 }
 
 /*Verify breakpoint*/
