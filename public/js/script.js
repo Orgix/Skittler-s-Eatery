@@ -4,17 +4,29 @@ const column2 = document.getElementById('col_2');
 const collapse1 = document.getElementById('collapseOne');
 const collapse2 = document.getElementById('collapseTwo');
 
-/*boolean for avoiding perfoming multiple copyContent(). Mainly for the resize event*/
+let container = document.getElementsByClassName('parallaxContainer')[0];
+
+
+/*boolean for avoiding perfoming multiple copyContent() and unnecessary class add/remove. Mainly for the resize event*/
 let hasContent = false;
+let addedParallax = true;
+let hasResizedToMd = false;
 
 /*pixel limit that will be useful in the events*/
 const limit = 768;
-
+const parPath = phpPath;
 /*Returns browser's innerWidth value. Useful for checking*/
-const getWindowWidth = () =>{
-  return window.innerWidth;
+const getWindowWidth = () => window.innerWidth
+
+
+/*removing element function*/
+const deleteElem = el =>{
+ console.log(el);
+ el.remove();
+ console.log(el);
 }
 
+deleteElem(document.getElementById('path'))
 /*Simple function to copy the content from the targeted elements to another set of targeted elements*/
 const copyContent = () =>{
   let content = [column1.innerHTML, column2.innerHTML];
@@ -25,18 +37,51 @@ const copyContent = () =>{
 
 }
 
-/*Verify breakpoint*/
-const breakpointVerification = ()=>{
-  return getWindowWidth() <= limit ? true : false;
+const toggleBooleans = () => {
+  hasResizedToMd = !hasResizedToMd
+  addedParallax = !addedParallax
 }
 
-/*Events for footer accordion*/
+const addParallax = () => {
+
+  container.classList.remove("medium-below")
+  container.childNodes[1].setAttribute("data-parallax","scroll")
+  container.childNodes[1].setAttribute("data-image-src","../"+parPath+"/img5.jpg");
+  toggleBooleans();
+}
+
+const removeParallax = () =>{
+
+  container.classList.add("medium-below");
+  container.childNodes[1].removeAttribute("data-parallax");
+  container.childNodes[1].removeAttribute("data-image-src");
+  toggleBooleans();
+}
+
+/*Verify breakpoint*/
+const breakpointVerification = ()=> getWindowWidth() <= limit ? true : false;
+
+
+/*Events for footer accordion and parallax container*/
 window.addEventListener("load",()=>{
-  if(breakpointVerification()) copyContent()
+  if(breakpointVerification()) {
+    copyContent();
+    removeParallax();
+  }
 });
 
 window.addEventListener("resize",()=>{
-  if(!hasContent){
-    if(breakpointVerification()) copyContent()
-  }
+    if(breakpointVerification()) {
+      if(!hasContent){
+        copyContent();
+      }
+      if(!hasResizedToMd){
+        removeParallax();
+      }
+    }
+    else{
+        if(!addedParallax){
+          addParallax();
+        }
+    }
 });

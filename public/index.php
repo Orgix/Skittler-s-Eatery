@@ -1,8 +1,8 @@
 <?php require_once("../resources/config.php"); ?>
 <?php include(TEMPLATE_FRONT.DS."header.php"); ?>
-  <!--Carousel-->
-  <?php include(TEMPLATE_FRONT.DS."carousel.php"); ?>
 
+
+  <?php include(TEMPLATE_FRONT.DS."parallax_screen.php"); ?>
 
   <!--Container with headings -->
   <div class="container-fluid p-5 headings-container">
@@ -19,21 +19,19 @@
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
 
+      <!-- .col-lg-4 -->
       <div class="col-lg-4 mt-2 headings-item-center ">
-        <!-- delivery scotter icon -->
         <i class="fas fa-motorcycle fa-6x mt-2"></i>
-        <!-- <img class="rounded-circle mt-3" src="img/img5.jpg" alt="Generic placeholder image" width="100" height="100"> -->
+
         <h2>Delivery</h2>
         <p>It is not just the order process that is fast and simplified. Skittler's delivery is guaranteed to deliver the order at your door in less than half an hour! That includes both the process of preparing your order and delivering it at your
           door!</p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
 
-
+      <!-- .col-lg-4 -->
       <div class="col-lg-4 mt-2 headings-item-side bg-white">
-        <!-- icon with food/food materials -->
         <i class="far fa-clock fa-6x mt-2"></i>
-        <!-- <img class="rounded-circle mt-3" src="img/img1.jpg" alt="Generic placeholder image" width="100" height="100"> -->
         <h2>Support</h2>
         <p>Needless to say, we are here for you for any question regarding us and our menu! We provide 24/7 support. Feel free to either contact us via phone or fill in the contact form from the link below!</p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
@@ -43,8 +41,9 @@
   </div>
 
 
-  <hr class="featurette-divider">
-  <div class="container-fluid marketing pt-1">
+  <!-- Featurette container -->
+  <div class="container-fluid marketing pt-5">
+    <!-- row -->
     <div class="row">
       <div class=" col-md-12 col-lg-8 col-xl-9">
         <div class="row featurette">
@@ -102,8 +101,6 @@
 
         <hr class="featurette-divider">
       </div>
-
-      <!--Sidebar-->
       <div class="aside col-md-12 col-lg-4 col-xl-3 pt-4">
         <div class="card">
           <div class="card-header">
@@ -183,9 +180,8 @@
           </div>
         </div>
       </div>
-      <!-- /.Sidebar -->
-    </div>
+    </div><!-- / .row-->
 
-  </div> <!-- //container with headings-->
+  </div> <!-- /.Featurette container -->
 
 <?php include(TEMPLATE_FRONT.DS."footer.php");
