@@ -159,13 +159,21 @@
   </div>
 </footer>
 <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 37.941517, lng: 23.652365},
-          zoom: 18
+function initMap() {
+        var myLatLng = {lat: 37.941517, lng: 23.652365};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 18,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map
         });
       }
+
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB12dHaOxEgA4qQ4igIbzYjmxOCbTVaeBE&callback=initMap"
     async defer></script>
