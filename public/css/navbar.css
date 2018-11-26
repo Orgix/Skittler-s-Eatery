@@ -81,8 +81,7 @@ color: #e38612;
   background-color: black;
 }
 .welcome-screen .btn-group > .btn-primary:hover{
-
-  background-color: blue;
+  background-color: #c6b515;
 }
 .bg-ultra-dark{
   background-color: #121414;

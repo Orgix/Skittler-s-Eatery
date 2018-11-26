@@ -16,22 +16,40 @@
           Skittler's Eatery
         </p>
       </div>
-      <div class="col-md-3 order-2 order-md-4 text-left">
+      <div class="col-md-3 order-2 order-md-4 text-center">
         <p class="mb-4 text-white font-weight-bold">
-        <u>OPENING HOURS:</u>
-      </p>
-      <p>
-        Mon-Tue: 12am - 11pm
-      </p>
-      <p>
-        Wed: 12am - 10pm
-      </p>
-      <p>
-        Thu-Fri: 11am - 12pm
-      </p>
-      <p>
-        Weekend: 11am - 12pm
-      </p>
+          <u>OPENING HOURS:</u>
+        </p>
+        <div class="d-table text-left m-auto">
+          <div class="d-table-row">
+            <div class="d-table-cell ">
+              <p>
+                Mon-Tue: 12am - 11pm
+              </p>
+            </div>
+          </div>
+          <div class="d-table-row">
+            <div class="d-table-cell">
+              <p>
+                Wed: 12am - 10pm
+              </p>
+            </div>
+          </div>
+          <div class="d-table-row">
+            <div class="d-table-cell">
+              <p>
+                Thu-Fri: 11am - 12pm
+              </p>
+            </div>
+          </div>
+          <div class="d-table-row">
+            <div class="d-table-cell">
+              <p>
+                Weekend: 11am - 12pm
+              </p>
+            </div>
+          </div>
+        </div>
 
       </div>
 
