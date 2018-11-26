@@ -7,9 +7,7 @@
     <a class="navbar-brand d-md-inline-block" href="#">
       Skittler's Eatery
     </a>
-    <!-- <a class="navbar-brand-two mx-auto d-md-none d-inline-block" href="#">
-      <img src="logo.png" alt="logo">
-    </a> -->
+
     <div class="w-100 text-right">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -32,6 +30,24 @@
       </li>
       <li class='nav-item'>
         <a href='#' class='nav-link  mr-1  ml-md-2 mt-2   menu-item  p-0 font-weight-bold'><i class="fas fa-sign-in-alt mr-1"></i>Sign In</a>
+      </li>
+
+      <div class="dropdown d-none d-md-block">
+        <button class="dropdown-toggle btn btn-danger text-white ml-md-2 font-weight-bold" type="button" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user"></i><span class="pl-2">Username</span>
+        </button>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-user mr-1 mr-md-2"></i>My profile</a></li>
+            <li><a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-shopping-basket mr-1 mr-md-2"></i>My orders</a></li>
+            <li><a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-shopping-cart mr-1 mr-md-2"></i>My cart</a></li>
+            <li><a class="dropdown-item font-weight-bold" href="#"><i class="fas fa-sign-out-alt mr-1 mr-md-2"></i>Logout</a></li>
+
+          </ul>
+      </div>
+      <li class="d-block d-md-none" id="small-breakpoint">
+        <hr class="toggler-divider">
+        <div class="text-center"><span class="h4">Username</span></div>
+        <ul class=""></ul>
       </li>
     </ul>
   </div>
