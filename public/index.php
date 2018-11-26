@@ -99,7 +99,7 @@
           </div>
         </div>
 
-        <hr class="featurette-divider">
+        <hr class="last-featurette-divider">
       </div>
       <div class="aside col-md-12 col-lg-4 col-xl-3 pt-4">
         <div class="card">

@@ -9,6 +9,45 @@
 */
 @import url("https://fonts.googleapis.com/css?family=Bad+Script");
 @import url("https://fonts.googleapis.com/css?family=Raleway");
+
+
+#dropdownMenuButton:hover{
+  cursor:pointer;
+}
+.dropdown-menu{
+  background-color: #121414 ;
+}
+.dropdown-menu .dropdown-item{
+  color:white;
+}
+.dropdown-menu .dropdown-item:hover{
+  color:#121414;
+}
+
+.toggler-divider{
+  margin: 0.75rem 0;
+  background-color:white;
+}
+
+#small-breakpoint ul{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+#small-breakpoint ul li a{
+  color:white;
+}
+#small-breakpoint > div > span{
+  color:white;
+}
+
+#small-breakpoint > ul > li > a {
+  padding:0;
+}
+#small-breakpoint > ul > li > a:hover {
+  color : orange;
+  background:none;
+}
 .marketing{
   background: linear-gradient(to bottom right,#fff, #F0E3B2 70%),
 }
@@ -107,7 +146,7 @@ color: #e38612;
   color: white;
 }
 /*Featurette CSS*/
-.btn-secondary{
+.headings-item-center .btn-secondary,.headings-item-side .btn-secondary{
   border: none;
   border-radius: 20px;
   padding: 16px;
@@ -116,7 +155,9 @@ color: #e38612;
 .featurette-divider {
   margin: 2.25rem 0; /* Space out the Bootstrap <hr> more */
 }
-
+.last-featurette-divider {
+  margin: 0.65rem 0; /* Space out the Bootstrap <hr> more */
+}
 /* Thin out the marketing headings */
 .featurette-heading {
   font-weight: 300;
@@ -182,6 +223,9 @@ under md only*/
     content: "\f0d7";
 }
 
+#map{
+  height:360px;
+}
 
 @media (max-width:450px){
   .medium-below{

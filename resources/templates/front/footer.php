@@ -1,3 +1,5 @@
+
+<div id="map"></div>
 <footer class="sktl text-light font-weight-bold">
 
 
@@ -156,7 +158,17 @@
     </div>
   </div>
 </footer>
-
+<script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 37.941517, lng: 23.652365},
+          zoom: 18
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB12dHaOxEgA4qQ4igIbzYjmxOCbTVaeBE&callback=initMap"
+    async defer></script>
 
 
 
@@ -166,11 +178,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="js/parallax.min.js"></script>
-
-<script id="path">
-  const phpPath = "<?php echo IMG_PATH; ?>";
-</script>
-
 <script src='js/script.js'></script>
 </body>
 

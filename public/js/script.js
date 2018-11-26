@@ -3,9 +3,9 @@ const column1 = document.getElementById('col_1');
 const column2 = document.getElementById('col_2');
 const collapse1 = document.getElementById('collapseOne');
 const collapse2 = document.getElementById('collapseTwo');
-
+const headerContainer = document.getElementById('small-breakpoint').getElementsByTagName("ul")[0];
+const headerContent = document.getElementsByClassName('dropdown')[0].childNodes[3];
 let container = document.getElementsByClassName('parallaxContainer')[0];
-
 
 /*boolean for avoiding perfoming multiple copyContent() and unnecessary class add/remove. Mainly for the resize event*/
 let hasContent = false;
@@ -14,25 +14,18 @@ let hasResizedToMd = false;
 
 /*pixel limit that will be useful in the events*/
 const limit = 768;
-const parPath = phpPath;
+const pathToBg = "../../resources/img";
 /*Returns browser's innerWidth value. Useful for checking*/
 const getWindowWidth = () => window.innerWidth
 
 
-/*removing element function*/
-const deleteElem = el =>{
- console.log(el);
- el.remove();
- console.log(el);
-}
-
-deleteElem(document.getElementById('path'))
 /*Simple function to copy the content from the targeted elements to another set of targeted elements*/
 const copyContent = () =>{
   let content = [column1.innerHTML, column2.innerHTML];
 
   collapse1.innerHTML = content[0];
   collapse2.innerHTML = content[1];
+  headerContainer.innerHTML = headerContent.innerHTML;
   hasContent = true;
 
 }
@@ -44,9 +37,9 @@ const toggleBooleans = () => {
 
 const addParallax = () => {
 
-  container.classList.remove("medium-below")
-  container.childNodes[1].setAttribute("data-parallax","scroll")
-  container.childNodes[1].setAttribute("data-image-src","../"+parPath+"/img5.jpg");
+  container.classList.remove("medium-below");
+  container.childNodes[1].setAttribute("data-parallax","scroll");
+  container.childNodes[1].setAttribute("data-image-src",""+pathToBg+"/img5.jpg");
   toggleBooleans();
 }
 
@@ -60,6 +53,7 @@ const removeParallax = () =>{
 
 /*Verify breakpoint*/
 const breakpointVerification = ()=> getWindowWidth() <= limit ? true : false;
+
 
 
 /*Events for footer accordion and parallax container*/
