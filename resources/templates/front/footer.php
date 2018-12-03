@@ -1,5 +1,5 @@
 
-<div id="map"></div>
+
 <footer class="sktl text-light font-weight-bold">
 
 

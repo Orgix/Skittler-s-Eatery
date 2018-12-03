@@ -183,5 +183,5 @@
     </div><!-- / .row-->
 
   </div> <!-- /.Featurette container -->
-
-<?php include(TEMPLATE_FRONT.DS."footer.php");
+<div id="map"></div>
+<?php include(TEMPLATE_FRONT.DS."footer.php");?>
