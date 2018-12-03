@@ -39,7 +39,7 @@ const addParallax = () => {
 
   container.classList.remove("medium-below")
   container.childNodes[1].setAttribute("data-parallax","scroll")
-  container.childNodes[1].setAttribute("data-image-src","img/img5.jpg");
+  container.childNodes[1].setAttribute("data-image-src","img/1-1949-.jpg");
   toggleBooleans();
 }
 
