@@ -7,7 +7,10 @@
 }
 
 .register-right .nav-link{
-  color:blue !important;
+  color:#212121 !important;
+  font-family:'Raleway', sans-serif;
+  font-size:1.4rem;
+  font-weight:bold;
 }
 .register-right .nav-link:hover{
   color:orange !important;
@@ -15,6 +18,7 @@
 .register-left{
     text-align: center;
     color: #fff;
+    font-weight:550;
 }
 .register-left input{
     border: none;
@@ -78,12 +82,16 @@
     color: #495057;
 }
 
+.register .row .col-md-9{
+  padding-left:0;
+
+}
 
 </style>
 
-<div class="container-fluid register mt-0 mt-md-3 ">
+<div class="container-fluid register">
     <div class="row">
-        <div class="col-md-3 register-left bg-ultra-dark mt-0 mt-md-5">
+        <div class="col-md-3 register-left bg-ultra-dark">
 
             <img src="<?php echo IMG_PATH;?>/svgs/burger.svg" alt="">
             <h3>Welcome</h3>

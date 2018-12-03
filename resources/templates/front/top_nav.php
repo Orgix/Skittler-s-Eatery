@@ -29,7 +29,7 @@
         <a href="#" class="nav-link mr-3 mt-2 menu-item  p-0 font-weight-bold"><i class="fas fa-phone mr-1"></i>Contact</a>
       </li>
       <li class='nav-item'>
-        <a href='#' class='nav-link  mr-1  ml-md-2 mt-2   menu-item  p-0 font-weight-bold'><i class="fas fa-sign-in-alt mr-1"></i>Sign In</a>
+        <a href='register.php' class='nav-link  mr-1  ml-md-2 mt-2   menu-item  p-0 font-weight-bold'><i class="fas fa-sign-in-alt mr-1"></i>Sign In</a>
       </li>
 
       <div class="dropdown d-none d-md-block">
