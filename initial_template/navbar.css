@@ -200,6 +200,9 @@ under md only*/
     border-bottom:1px solid white;
     cursor:pointer;
   }
+  .title{
+    font-size:1.58rem;
+  }
 }
 /*toggle icon on footer's accordion*/
 .accordion .card-header:after {
