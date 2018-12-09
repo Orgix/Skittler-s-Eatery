@@ -5,12 +5,13 @@
     3) media queries
 */
 /*1.--------------------------MAIN THEME-------------------------*/
+@import url("https://fonts.googleapis.com/css?family=Bad+Script");
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+
 body{
   font-family: 'Raleway', sans-serif;
 }
-
-@import url("https://fonts.googleapis.com/css?family=Bad+Script");
-@import url("https://fonts.googleapis.com/css?family=Raleway");
 
 .bg-ultra-dark{
   background-color: #212121;
@@ -38,7 +39,7 @@ body{
 .sktl{
   padding-top: 60px;
   padding-bottom: 40px;
-  background-image: url("img/background.jpg");
+  background-color: #212121;
 }
 
 footer p > a{
@@ -49,18 +50,19 @@ footer p > a:hover{
   color:#FF8039;
 }
 .soc-item a{
-  color: #FF8039;
+  color: #F29E34;
 }
-/*#D15839*/
+
 .soc-item a:hover{
   color:  #FF8039;
 }
 
-/*toggle icon on footer's accordion*/
-.accordion .card-header:after {
-    font-family: 'Font Awesome 5 Free';
+/* toggle icon on footer's accordion*/
+ .accordion .card-header:after {
+    font-family: "Font Awesome 5 Free";
     content: "\f0d8";
-    float: right;
+    font-weight:900;
+    float:right;
 }
 .accordion .card-header.collapsed:after {
     content: "\f0d7";
@@ -69,6 +71,28 @@ footer p > a:hover{
 /*-----------------------------------*/
 /*2.----------MAIN PAGE CONTENT------------------------*/
 
+.welcome-container > .row > .col-md-3 {
+    text-align: center;
+      color: #fff;
+      font-weight:550;
+      background-color: #C42B2A;
+}
+.welcome-container > .row > .col-md-3 > img{
+  margin-top: 15%;
+      margin-bottom: 5%;
+      width: 25%;
+      -webkit-animation: mover 2s infinite  alternate;
+      animation: mover 1s infinite  alternate;
+}
+
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-25px); }
+  }
+  @keyframes mover {
+      0% { transform: translateY(0); }
+    100% { transform: translateY(-25px); }
+  }
 /*-------Parallax section--------*/
 .parallaxContainer{
     overflow-x: hidden; /*due to image scaling overflowing we hide the scroll bars */
@@ -77,7 +101,7 @@ footer p > a:hover{
 
 .welcome-screen{
 width:100%;
-min-height:800px;
+min-height:650px;
 padding-top:110px;
 position:relative;
 overflow:hidden;
@@ -140,11 +164,20 @@ overflow:hidden;
 .headings-item-center{
   color: white;
 }
+.headings-item-side > h2::after, .headings-item-center > h2::after{
+  content:" ";
+  display:block;
+  width:50px;
+  background-color:red;
+  border:2px solid #f29e34;
+  margin:15px auto;
+}
+
 .headings-container .btn-secondary{
   border: none;
   border-radius: 10px;
   padding: 16px;
-  background-color: #C49342;
+  background-color: #F29E34;
 }
 /*----------------------------------*/
 
