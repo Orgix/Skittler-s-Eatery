@@ -68,23 +68,37 @@
       <div class="my-3">
         <span class="h3">Menu categories</span>
       </div>
+     
       <ul class="category_list m-0 p-0 w-100">
         <li class=" "><a href="#category_1">Category 1</a></li>
         <li class=" "><a href="#category_2">Category 2</a></li>
         <li class=" "><a href="#category_3">Category 3</a></li>
         <li class=" "><a href="#category_4">Category 4</a></li>
         <li class=" "><a href="#category_5">Category 5</a></li>
+        <li><a href="">Category 1</a></li>
+        <li><a href="">Category 1</a></li>
+        <li><a href="">Category 1</a></li>
+   
       </ul>
+    
     </div>
 <div class="col-lg-9 p-0 ">
 <div class="my-0 w-100 text-center menu-title position-relative">
   <div class="menu-title-overlay"></div>
     <span class="h2 text-light">Our menu</span>
   </div>
-  <div class="container-fluid menu">
-    <div class="row" id="category_1">
-      <div class="col-12 w-100  my-2 category_title">
-        <span class="h3 ">Category 1</span>
+
+  <div class="container-fluid menu" >
+  <div class="menu-card card d-block d-md-none mb-0 text-left ">
+      <div class="card-header collapsed" data-toggle="collapse" data-target="#category_1" aria-expanded="False" >
+        <a class="h3">
+          Category 1
+        </a>
+      </div>
+    </div>
+    <div class="row collapse flexlist" id="category_1">
+      <div class="col-12 w-100  my-2 category_title d-none d-md-block">
+        <span class="h3">Category 1</span>
       </div>
       <div class="col-md-6 col-xl-4">
         <div class="card">
@@ -188,9 +202,15 @@
         </div>
       </div>
     </div>
-
-    <div class="row" id="category_2">
-      <div class="col-12 w-100  my-2 category_title">
+    <div class="menu-card card d-block d-md-none mb-0 text-left ">
+        <div class="card-header collapsed" data-toggle="collapse" data-target="#category_2" aria-expanded="False" >
+          <a class="h3">
+            Category 2
+          </a>
+        </div>
+      </div>
+    <div class="row collapse flexlist" id="category_2">
+      <div class="col-12 w-100  my-2 category_title d-none d-md-block">
         <span class="h3 ">Category 2</span>
       </div>
       <div class=" col-md-6 col-xl-4">
@@ -295,9 +315,15 @@
         </div>
       </div>
     </div>
-
-    <div class="row" id="category_3">
-      <div class="col-12 w-100  my-2 category_title">
+    <div class="menu-card card d-block d-md-none mb-0 text-left ">
+        <div class="card-header collapsed" data-toggle="collapse" data-target="#category_3" aria-expanded="False" >
+          <a class="h3">
+            Category 3
+          </a>
+        </div>
+      </div>
+    <div class="row collapse flexlist" id="category_3">
+      <div class="col-12 w-100  my-2 category_title d-none d-md-block">
         <span class="h3 ">Category 3</span>
       </div>
       <div class=" col-md-6 col-xl-4">
@@ -402,9 +428,15 @@
         </div>
       </div>
     </div>
-
-    <div class="row" id="category_4">
-      <div class="col-12 w-100  my-2 category_title">
+    <div class="menu-card card d-block d-md-none mb-0 text-left ">
+          <div class="card-header collapsed" data-toggle="collapse" data-target="#category_4" aria-expanded="False" >
+            <a class="h3">
+              Category 4
+            </a>
+          </div>
+        </div>
+    <div class="row collapse flexlist" id="category_4">
+      <div class="col-12 w-100  my-2 category_title d-none d-md-block">
         <span class="h3 ">Category 4</span>
       </div>
       <div class=" col-md-6 col-lg-4">
@@ -509,9 +541,15 @@
         </div>
       </div>
     </div>
-
-    <div class="row" id="category_5">
-      <div class="col-12 w-100  my-2 category_title">
+    <div class="menu-card card d-block d-md-none mb-0 text-left ">
+          <div class="card-header collapsed" data-toggle="collapse" data-target="#category_5"aria-expanded="False">
+            <a class="h3">
+              Category 5
+            </a>
+          </div>
+        </div>
+    <div class="row collapse flexlist" id="category_5">
+      <div class="col-12 w-100  my-2 category_title d-none d-md-block">
         <span class="h3 ">Category 5</span>
       </div>
       <div class=" col-md-6 col-lg-4">
@@ -774,6 +812,7 @@
       </div>
     </div>
   </div>
+  <div class="go_to_top"><i class="fa fa-angle-up fa-3x"></i></div>
 </footer>
 
 
@@ -785,26 +824,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="js/parallax.min.js"></script>
-<script>
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: 37.941683, lng: 23.652626};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 16, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-</script>
-<!--Load the API from the specified URL
-* The async attribute allows the browser to render the page while the API loads
-* The key parameter will contain your own API key (which is not needed for this tutorial)
-* The callback parameter executes the initMap() function
--->
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDba09xc7AdNwUdpEStGjy7Wrlj51OPB4A&callback=initMap">
-</script>
 <script src='js/script.js'></script>
+<script src="js/menu.js"></script>
 </body>
 
 </html>

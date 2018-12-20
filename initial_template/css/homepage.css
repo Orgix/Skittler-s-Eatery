@@ -6,7 +6,7 @@
              5)Media queries
 */
   /*---------1.WELCOME CONTAINER----------*/
-.welcome-left> img{
+.welcome-left> .inner-left > img{
       margin-top: 15%;
       margin-bottom: 5%;
       width: 25%;
@@ -31,6 +31,7 @@
   padding-top:110px;
   position:relative;
   overflow:hidden;
+  background:transparent;
   }
   .parallax-curtain{
     position:absolute;
@@ -169,11 +170,6 @@
      }
    }
    @media (max-width:768px){
-
-     .title{
-       font-size:1.58rem;
-     }
-
      .welcome-text:first-child{
        font-size:1.2rem;
      }
