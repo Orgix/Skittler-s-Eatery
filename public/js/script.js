@@ -1,81 +1,55 @@
 /*Targeting divs*/
-const column1 = document.getElementById('col_1');
-const column2 = document.getElementById('col_2');
-const collapse1 = document.getElementById('collapseOne');
-const collapse2 = document.getElementById('collapseTwo');
-const headerContainer = document.getElementById('small-breakpoint').getElementsByTagName("ul")[0];
-const headerContent = document.getElementsByClassName('dropdown')[0].childNodes[3];
-let container = document.getElementsByClassName('parallaxContainer')[0];
 
-/*boolean for avoiding perfoming multiple copyContent() and unnecessary class add/remove. Mainly for the resize event*/
-let hasContent = false;
-let addedParallax = true;
-let hasResizedToMd = false;
+
+var goTopBtn = document.querySelector('.go_to_top');
+
 
 /*pixel limit that will be useful in the events*/
 const limit = 768;
-const pathToBg = "../../resources/img";
-/*Returns browser's innerWidth value. Useful for checking*/
-const getWindowWidth = () => window.innerWidth
 
+
+
+/*Returns browser's innerWidth value. Useful for checking*/
+const getWindowWidth = () =>{
+  return window.innerWidth;
+}
 
 /*Simple function to copy the content from the targeted elements to another set of targeted elements*/
 const copyContent = () =>{
-  let content = [column1.innerHTML, column2.innerHTML];
 
-  collapse1.innerHTML = content[0];
-  collapse2.innerHTML = content[1];
-  headerContainer.innerHTML = headerContent.innerHTML;
-  hasContent = true;
 
-}
-
-const toggleBooleans = () => {
-  hasResizedToMd = !hasResizedToMd
-  addedParallax = !addedParallax
-}
-
-const addParallax = () => {
-
-  container.classList.remove("medium-below");
-  container.childNodes[1].setAttribute("data-parallax","scroll");
-  container.childNodes[1].setAttribute("data-image-src",""+pathToBg+"/img5.jpg");
-  toggleBooleans();
-}
-
-const removeParallax = () =>{
-
-  container.classList.add("medium-below");
-  container.childNodes[1].removeAttribute("data-parallax");
-  container.childNodes[1].removeAttribute("data-image-src");
-  toggleBooleans();
 }
 
 /*Verify breakpoint*/
-const breakpointVerification = ()=> getWindowWidth() <= limit ? true : false;
+const breakpointVerification = ()=>{
+  return getWindowWidth() <= limit ? true : false;
+}
 
+const trackScroll= () => {
+  let scrolled = window.pageYOffset;
+   coords = document.documentElement.clientHeight;
 
-
-/*Events for footer accordion and parallax container*/
-window.addEventListener("load",()=>{
-  if(breakpointVerification()) {
-    copyContent();
-    removeParallax();
+  if (scrolled > coords) {
+    goTopBtn.classList.add('back_to_top-show');
   }
-});
+  if (scrolled < coords) {
+    goTopBtn.classList.remove('back_to_top-show');
+  }
+}
 
-window.addEventListener("resize",()=>{
-    if(breakpointVerification()) {
-      if(!hasContent){
-        copyContent();
-      }
-      if(!hasResizedToMd){
-        removeParallax();
-      }
-    }
-    else{
-        if(!addedParallax){
-          addParallax();
-        }
-    }
-});
+function backToTop() {
+  if (window.pageYOffset > 0) {
+    window.scrollBy(0, -30);
+    setTimeout(backToTop, 0);
+  }
+}
+
+
+
+
+
+
+
+
+window.addEventListener('scroll', trackScroll);
+goTopBtn.addEventListener('click', backToTop);

@@ -1,0 +1,126 @@
+/*MAIN LAYOUT CSS*/
+/*  SECTIONS:
+    1) main theme(header,main theme structure, footer)
+    2) layout media queries
+*/
+/*1.--------------------------MAIN THEME-------------------------*/
+@import url("https://fonts.googleapis.com/css?family=Bad+Script");
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+
+body{
+  font-family: 'Raleway', sans-serif;
+  background:#F8F9FA;
+  }
+
+.bg-ultra-dark{
+  background-color: #212121;
+}
+
+/*----------Navbar-links--------*/
+.title{
+  font-family: 'Bad Script', cursive;
+  font-size: 2.2rem;
+}
+
+
+#myNavbar .nav-link {
+  color: white !important;
+  background-color: transparent !important;
+}
+
+#myNavbar .nav-link:hover {
+  /* border-bottom-color: orange !important; */
+  color:orange !important;
+}
+/*------------------------------*/
+
+/*------------Main structure---------*/
+.welcome-left{
+    text-align: center;
+      color: #fff;
+      font-weight:550;
+      background-color: #C42B2A;
+}
+
+
+
+
+/*-----------Footer------------*/
+.sktl{
+  padding-top: 60px;
+  padding-bottom: 40px;
+  background-color: #212121;
+}
+
+footer p > a{
+  color:white;
+}
+footer p > a:hover{
+  text-decoration: none;
+  color:#FF8039;
+}
+.soc-item a{
+  color: #F29E34;
+}
+
+.soc-item a:hover{
+  color:  #FF8039;
+}
+
+/* toggle icon on footer's accordion*/
+.ft-card{
+  background:rgba(0,0,0,.03);
+  border:1px solid rgba(0,0,0,.125);
+  border-bottom:1px solid white;
+}
+.ft-card .card-header:after {
+   font-family: "Font Awesome 5 Free";
+   content: "\f0d8";
+   font-weight:900;
+   float:right;
+}
+.ft-card .card-header.collapsed:after {
+   content: "\f0d7";
+}
+
+.go_to_top{
+  color:white;
+  background:#414141c4;
+  width:50px;
+  text-align:center;
+  height:50px;
+  line-height:50px;
+  position:fixed;
+  right:10px;
+  bottom:50px;
+  cursor:pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s .75s, opacity .75s linear;
+}
+.back_to_top-show{
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .5s linear;
+}
+/*-----------------------------------*/
+
+/*3.-------------------MEDIA QUERIES----------------*/
+
+@media (min-width:768px){
+  .list{
+    display:block !important;
+  }
+}
+@media (max-width:767px){
+  .list{
+    padding-left:.75rem;
+  }
+  .list p{
+    text-align:left;
+  }
+  .title{
+    font-size:1.58rem;
+  }
+}

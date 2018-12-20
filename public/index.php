@@ -1,8 +1,36 @@
 <?php require_once("../resources/config.php"); ?>
 <?php include(TEMPLATE_FRONT.DS."header.php"); ?>
 
+<div class="container-fluid welcome-container">
+  <div class="row">
+  <div class="col-lg-2 d-none d-lg-block welcome-left">
+    <div class="mt-5 pt-5 inner-left">
+        <img src="img/svgs/burger.svg" alt="">
+        <h3>Welcome</h3>
+        <p>You are 30 seconds away from our delicious menu</p>
+    </div>
+  </div>
 
-  <?php include(TEMPLATE_FRONT.DS."parallax_screen.php"); ?>
+<div class="col-lg-10 p-0">
+
+  <div class="welcome-screen" data-parallax="scroll" data-image-src="img/1-1949-.jpg">
+    <div class="parallax-curtain"></div>
+      <div class="w-100 text-center">
+
+
+        <div class="welcome-text text-light m-auto w-75 position-absolute">
+          <span class="font-weight-bold">YOUR FAVORITE</span><br>
+          <span class="font-weight-bold">FOOD DELIVERY SERVICE</span><br>
+          <p>Welcome to Food Delivery, a place where you can order your favorite restaurant dishes, drinks, and desserts at   affordable price. We are glad to offer you the best food in the area to everyone.</p>
+          <a href="menu.php"><span class="btn text-light font-weight-bold">ORDER NOW</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
 
   <!--Container with headings -->
   <div class="container-fluid p-5 headings-container">
@@ -41,6 +69,8 @@
   </div>
 
 
+
+
   <!-- Featurette container -->
   <div class="container-fluid marketing pt-5">
     <!-- row -->
@@ -52,7 +82,7 @@
             <p class="lead">Don't falter! Skittler's Eatery burgers are made with love and care from us to you! We use fresh materials , from our home-made buns to the 100% beef burger that will change your definition of joy!</p>
           </div>
           <div class="col-lg-5">
-            <img class="featurette-image img-fluid mx-auto rounded" src="<?php echo IMG_PATH;?>/burger-900x600.jpg" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto rounded" src="img/burger-900x600.jpg" alt="Generic placeholder image">
           </div>
         </div>
 
@@ -65,7 +95,7 @@
               in our menu. Take a look!</p>
           </div>
           <div class="col-lg-5 order-lg-1">
-            <img class="featurette-image img-fluid mx-auto rounded" src="<?php echo IMG_PATH;?>/pizza-900x600.jpg" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto rounded" src="img/pizza-900x600.jpg" alt="Generic placeholder image">
           </div>
         </div>
 
@@ -79,7 +109,7 @@
               There is no holding back. Impress us with your very own combination!</p>
           </div>
           <div class="col-lg-5">
-            <img class="featurette-image img-fluid mx-auto rounded" src="<?php echo IMG_PATH;?>/sandwich-900x600.jpg" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto rounded" src="img/sandwich-900x600.jpg" alt="Generic placeholder image">
           </div>
         </div>
 
@@ -94,94 +124,26 @@
               that is bound to knock you out! Take a look !</p>
           </div>
 
-          <div class="col-lg-5 order-lg-1">
-            <img class="featurette-image img-fluid mx-auto rounded" src="<?php echo IMG_PATH;?>/soyblaki-900x600.jpg" alt="Generic placeholder image">
+          <div class="col-lg-5 order-lg-1 ">
+            <img class="featurette-image img-fluid mx-auto rounded" src="img/soyblaki-900x600.jpg" alt="Generic placeholder image">
           </div>
         </div>
 
-        <hr class="last-featurette-divider">
+        <hr class="featurette-divider">
       </div>
-      <div class="aside col-md-12 col-lg-4 col-xl-3 pt-4">
-        <div class="card">
-          <div class="card-header">
-            <h4>Product Search</h4>
-          </div>
-          <div class="card-body">
-            <form action="search.php" method="post">
-              <div class="input-group">
-                <input name="search" type="text" class="form-control">
-
-                <button name="submit" class="btn btn-default" type="submit">
-                  <span class="fas fa-search"></span>
-                </button>
-
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="card mt-4">
-          <div class="card-header">
-            <i class="fas fa-users fa-2x"></i>
-            <span class="h3 font-weight-bold ml-2">Sign In</span>
-          </div>
-          <div class="card-body">
-            <form action="includes/login.php" method="post">
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="fa fa-user text-dark"></i></div>
-                  </div>
-                  <input name="username" type="text" class="form-control" placeholder="Enter username">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="fas fa-key text-dark"></i></div>
-                  </div>
-                  <input type="password" name="user_password" class="form-control" placeholder="Enter password">
-                </div>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary form-control" name="login" type="submit">
-                  Submit
-                </button>
-              </div>
-
-              <div class="ml-1">
-                <span class="h6"><a href=''>Not a member yet? Join us!</a></span>
-              </div>
-            </form>
-          </div>
 
 
-        </div>
 
-        <div class="card mt-2 mb-2">
-          <div class="card-header">
-            <i class="fas fa-map-marker-alt fa-2x"></i>
-            <span class="h3 font-weight-bold ml-2">How to find us</span>
-          </div>
-          <div class="card-body">
-            <div class="row d-flex h-100">
-              <div class="col-4 col-md-5">
-                <img src="<?php echo IMG_PATH;?>/map.png" class="img-fluid">
-              </div>
-              <div class="col-8 col-md-7 text-center justify-content-center align-self-center">
-                <p>
-                  Contact Number: 210-2380321
-                </p>
-                <a class="btn btn-primary" href="#">
-                  <i class="fas fa-map fa-x"></i>
-                  View map
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div><!-- / .row-->
-
+      <!--Aside-->
+        <?php include(TEMPLATE_FRONT.DS."aside.php"); ?>
+      <!-- / .aside-->
+    </div><!-- /.row-->
   </div> <!-- /.Featurette container -->
-<div id="map"></div>
-<?php include(TEMPLATE_FRONT.DS."footer.php");?>
+
+
+
+
+  <!--google map api-->
+  <div id="map"></div>
+
+<?php include(TEMPLATE_FRONT.DS."footer.php"); ?>

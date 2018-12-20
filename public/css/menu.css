@@ -1,0 +1,91 @@
+.category_list{
+  list-style:none;
+}
+.category_list > li{
+  width:75%;
+  border:1px solid #212121;
+  margin:0 auto;
+  padding:1rem 0;
+  margin-bottom:.75rem;
+  background:#fff;
+  color:#212121;
+  font-weight:700;
+  border:0;
+  border-radius:4px;
+  cursor:pointer;
+}
+
+
+.menu-title{
+background-image:url("../img/1-1949-.jpg");
+background-repeat:no-repeat;
+background-size:cover;
+background-position:center;
+padding: 2rem 0;
+color:#FFF4E6;
+}
+.menu-title span{
+position:relative;
+text-shadow:2px 2px #212121;
+z-index:2;
+text-transform: uppercase;
+}
+.menu-title-overlay{
+position:absolute;
+left:0%;
+right:0%;
+top:0%;
+bottom:0%;
+background:rgba(0,0,0,0.1);
+z-index:0;
+}
+.category_title::after{
+content:' ';
+display:block;
+width:100%;
+background-color:red;
+border:1px solid #C6CDD5;
+margin:.5rem auto;
+}
+
+
+
+.menu{
+margin:14px 0;
+}
+.menu .row .card{
+  margin:10px -5px;
+}
+.menu-card{
+  background:rgba(0,0,0,.03);
+  border:1px solid rgba(255,255,255,.125);
+  border-bottom:1px solid black;
+}
+.menu-card .card-header:after {
+   font-family: "Font Awesome 5 Free";
+   content: "\f0d8";
+   font-weight:900;
+   float:right;
+   margin-top:6px;
+}
+.menu-card .card-header.collapsed:after {
+   content: "\f0d7";
+}
+
+@media (max-width:1278px){
+.category_list > li{
+  width:80% !important;
+}
+}
+@media (min-width:768px){
+  .flexlist{
+    display:flex !important;
+  }
+
+}
+@media (max-width:767px){
+  .flexlist{
+    padding-left:.75rem;
+  }
+
+}

@@ -1,0 +1,195 @@
+/*CSS FOR index.php
+  SECTIONS : 1)welcome-container row + parallax
+             2)headings Container;
+             3)Featurettes
+             4)Aside
+             5)Media queries
+*/
+  /*---------1.WELCOME CONTAINER----------*/
+.welcome-left> .inner-left > img{
+      margin-top: 15%;
+      margin-bottom: 5%;
+      width: 25%;
+      -webkit-animation: mover 2s infinite  alternate;
+      animation: mover 1s infinite  alternate;
+}
+
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-25px); }
+  }
+  @keyframes mover {
+      0% { transform: translateY(0); }
+    100% { transform: translateY(-25px); }
+  }
+
+  /*-------Parallax section--------*/
+
+  .welcome-screen{
+  width:100%;
+  min-height:650px;
+  padding-top:110px;
+  position:relative;
+  overflow:hidden;
+  background:transparent;
+  }
+  .parallax-curtain{
+    position:absolute;
+    left:0%;
+    right:0%;
+    top:0%;
+    bottom:0%;
+    background:rgba(0,0,0,0.3);
+  }
+
+  .welcome-text{
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.6rem;
+    left:0;
+    right:0;
+  }
+
+  .welcome-text:first-child{
+    font-size: 2rem;
+  }
+  .welcome-text span:nth-of-type(2){
+    font-size: 3.2rem;
+    letter-spacing: 2px;
+  }
+  .welcome-text p{
+    font-family: 'Raleway', sans-serif;
+    position: relative;
+    top: 1px;
+    font-size: 1.4rem;
+  }
+
+  .welcome-text .btn{
+    position: relative;
+    top: 30px;
+    border-radius: 10px;
+    padding: 14px;
+    background-color: #BA2702;
+  }
+
+  /*css class that is to be used only after 768px breakpoint*/
+  .medium-below{
+    background-image:url("../img/1-1949-.jpg");
+    background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+  }
+
+  /*----------------2.Introduction headings section-----------------*/
+  .headings-container{
+    background-color: #212121;
+  }
+  .headings-item-side{
+    color: #3A4042;
+    border-radius: 10px;
+  }
+  .headings-item-center{
+    color: white;
+  }
+  .headings-item-side > h2::after, .headings-item-center > h2::after{
+    content:" ";
+    display:block;
+    width:50px;
+    background-color:red;
+    border:2px solid #f29e34;
+    margin:15px auto;
+  }
+
+  .headings-container .btn-secondary{
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    background-color: #F29E34;
+  }
+  /*----------------------------------*/
+
+  /*-----3.Featurettes section----------------------*/
+  .marketing{
+      background: #FFF4E6;
+      color: #202020;
+  }
+
+  .featurette-divider {
+    margin: 2.25rem 0; /* Space out the Bootstrap <hr> more */
+  }
+
+  /* Thin out the marketing headings */
+  .featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+
+  }
+  /*---------------------------------------------------*/
+
+  /*---------4.Aside section ---------------------------------*/
+
+  .aside .card{
+    background: #212121;
+    border-radius: 4px;
+    color: #fff;
+  }
+  .aside  .btn{
+    background: #C49342;
+    border: none;
+  }
+  .aside a{
+    color: #fff;
+    text-decoration: underline;
+  }
+  .aside .card-header{
+    border-bottom: 2px solid #fff;
+  }
+
+  /*----------------------------------------------------*/
+  /*map div for incorporating google map.*/
+  #map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+   }
+
+
+
+   /*--------------5. MEDIA QUERIES-----------------*/
+   @media (max-width:450px){
+     .medium-below{
+       height:450px;
+       background-position: top, center;
+     }
+     .welcome-text{
+       top:5%;
+     }
+   }
+   @media(max-width:576px){
+     .welcome-text{
+       width:100% !important;
+     }
+   }
+   @media (max-width:768px){
+     .welcome-text:first-child{
+       font-size:1.2rem;
+     }
+     .welcome-text span:nth-of-type(2){
+       font-size: 1.5rem;
+       letter-spacing: 2px;
+     }
+
+     .welcome-text p{
+       font-size: 1.1rem;
+     }
+   }
+   @media (min-width: 40em) {
+     .featurette-heading {
+       font-size: 50px;
+     }
+   }
+
+   @media (min-width: 62em) {
+     .featurette-heading {
+       margin-top: 2rem;
+     }
+   }
