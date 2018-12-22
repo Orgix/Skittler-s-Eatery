@@ -140,22 +140,19 @@
   
 
   <?php 
+    $script_include = '<script src="js/';
     if($pageName == 'index'){
       echo '<script src="js/parallax.min.js" async></script>';
       include(TEMPLATE_FRONT.DS."map.php");
+      echo $script_include.'home.js" async></script>';
+    }
+    elseif($pageName == 'menu'){
+      echo $script_include.'menu.js" async></script>';
     }
   ?>
 
   <script src='js/script.js' async></script>
   
-  <?php
-    $script_include = '<script src="js/';
-    if($pageName == 'index'){
-      echo $script_include.'home'.'.js" async>';
-    }
-    
-  ?>
-
   </body>
 
 </html>
