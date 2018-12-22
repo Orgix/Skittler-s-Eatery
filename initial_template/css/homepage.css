@@ -24,7 +24,6 @@
   }
 
   /*-------Parallax section--------*/
-
   .welcome-screen{
   width:100%;
   min-height:650px;
@@ -68,7 +67,7 @@
     top: 30px;
     border-radius: 10px;
     padding: 14px;
-    background-color: #BA2702;
+    background-color: rgba(251, 92, 19, 0.918);
   }
 
   /*css class that is to be used only after 768px breakpoint*/

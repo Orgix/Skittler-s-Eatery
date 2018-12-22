@@ -39,7 +39,7 @@ const trackScroll= () => {
 
 function backToTop() {
   if (window.pageYOffset > 0) {
-    window.scrollBy(0, -30);
+    window.scrollBy(0,-70);
     setTimeout(backToTop, 0);
   }
 }

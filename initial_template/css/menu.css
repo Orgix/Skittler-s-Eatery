@@ -85,7 +85,7 @@ margin:14px 0;
 }
 @media (max-width:767px){
   .flexlist{
-    padding-left:.75rem;
+    padding:0 .65rem;
   }
 
 }
