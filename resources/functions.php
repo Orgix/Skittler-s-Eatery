@@ -201,8 +201,67 @@ function send_message(){ // SETTING ON PHP.INI .... otherwise the email will nev
 }
 
 
+/********************************************************** PAGE FUNCTIONS *******************************************/
+function get_info($message){
+  /*Function that will return the title depending on the query 
+	parameter. Used on info.php for the info-title mark-up 
+  */
+  $title = "";
+                    
+  switch($message){
+	  case 'about':
+	   $title = "About us";
+	   
+	   break;
+	  case 'faq':
+	   $title = "FAQs";
+	   break;
+	  case 'howitworks':
+	   $title = "How does it work";
+	   break;
+	  case 'contact':
+	   $title = 'Contact Us';
+	   break;
+	  case 'terms':
+	   $title = 'Terms & Conditions';
+	   break;
+	   case 'privacy':
+	   $title = "Privacy Policy";
+	   break;
+	  case 'methods':
+	   $title = "Payment Methods";
+	   break;
+	  case 'evaluation':
+	   $title = 'Evaluation Policy';
+	   break;
+	  case 'sitemap':
+	   $title = 'Sitemap';
+	   break;
+}	
+ $info = array($title, $message.'.php');
+ return $info;
+}
 
-
+function generate_items($pages, $pageRequested){
+	/*<li class="selected"><a href="info.php?page=about">About Us</a></li>
+                <li class=""><a href="info.php?page=faq">FAQs</a></li>
+                <li class=""><a href="info.php?page=howitworks">How does it work</a></li>
+                <li class=""><a href="info.php?page=contact">Contact Us</a></li>
+                <li class=""><a href="info.php?page=terms">Terms & Conditions</a></li>
+                <li class=""><a href="info.php?page=privacy" >Privacy Policy</a></li>
+                <li class=""><a href="info.php?page=methods">Payment Methods</a></li>
+                <li class=""><a href="info.php?page=evaluation">Evaluation Policy</a></li>
+				<li class=""><a href="info.php?page=sitemap">Sitemap</a></li> */
+				
+	for($i= 0; $i < count($pages); $i++){
+		if($pages[$i][0] == $pageRequested){
+			echo '<li class="selected"><a href="info.php?page='.$pages[$i][0].'">'.$pages[$i][1].'</a></li>';
+		}
+		else{
+			echo '<li><a href="info.php?page='.$pages[$i][0].'">'.$pages[$i][1].'</a></li>';
+		}
+	}
+}
 /***************************************************END of users' functions ***********************************/
 
 

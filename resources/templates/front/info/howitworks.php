@@ -1,0 +1,3 @@
+<p class="pb-3">It is quite simple.You need to sign in your account and press the ORDER NOW button. That will redirect you to our menu page, where you can choose from our big variety of meals.</p>
+   <p class="pb-3">Add your meals on the user's basket and click continue. Afterwards, you will get through the order verification stage, where you'll specify payment method and you'll be able to add any last note to your order.</p>
+   <p >Then , all you have to do is wait for the order to be prepared and sent to your home!</p>

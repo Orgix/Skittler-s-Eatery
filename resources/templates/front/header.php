@@ -15,7 +15,7 @@
   <link rel='stylesheet' href='css/layout.css'>
 
   <?php 
-    $pageName =substr(basename($_SERVER['PHP_SELF']), 0, -4);
+    $pageName =substr(basename($_SERVER['PHP_SELF']), 0, -4); /* substr 0 to -4 strips the .php from the basename() */
     $link = '<link rel="stylesheet" href="css/';
     $include ='';
     switch($pageName){
@@ -27,7 +27,12 @@
         break;
       case 'register':
         $include = $link.'register.css';
+        break;
+      case 'info':
+        $include = $link.'info.css';
+        break;
     }
+   
     echo $include.'">';
   ?>
   <title><?php 
