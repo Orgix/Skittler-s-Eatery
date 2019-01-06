@@ -3,7 +3,7 @@
 
 }
 
-.info-list > li{    
+.info-list > li{
     padding:1rem 0;
     margin-bottom:3px;
     background:#fff;
@@ -16,7 +16,7 @@
       display:block;
       text-decoration:none;
       color:#212121;
-      
+
   }
   .info-title{
     background-image:url("../img/1-1949-.jpg");
@@ -46,35 +46,55 @@
     }
     .info-list > li.selected{
         background-color:transparent;
-    } 
+    }
     .info-list > li.selected > a{
         color:#fff;
-    }  
-    #accordion .card > .card-header{
-        cursor:pointer;
     }
-   
+    
+    .info-text ul > li{
+      font-size:1.2rem;
+      text-align:justify;
+    }
+    .info-list > li >a:active, .info-list >li>a:focus{
+        outline: 0;
+        -moz-outline-style: none;
+        outline-style: none;
+    }
+	  .accordion a{
+		   text-decoration: none;
+       color: #212121;
+      }
+      
+      .accordion a:active,.accordion a:focus {
+        outline: 0;
+        -moz-outline-style: none;
+        outline-style: none;
+      }
+    .accordion h4{
+      font-weight: bold;
+    }
 @media(min-width:768px){
     .info-list{
         display:block !important;
     }
 }
 @media(max-width:767px){
+    
     .welcome-left{
         padding:0 ;
       }
-    .menu-card{
+    .info-card{
         border-radius:0;
         border-top:1px solid #212121;
         background:#212121;
     }
-     .menu-card .card-header:after {
+     .info-card .card-header:after {
         font-family: "Font Awesome 5 Free";
         content: "\f0d8";
         font-weight:900;
         float:right;
      }
-      .menu-card .card-header.collapsed:after {
+      .info-card .card-header.collapsed:after {
         content: "\f0d7";
      }
      .info-list{
@@ -83,6 +103,11 @@
     .info-list > li{
         border-radius:0;
         margin-bottom:1px;
+      }
+      .card-header a > h4{
+        font-size:1.35rem;
       } 
-
+      .card-body > p{
+          font-size:1.1rem;
+      }
 }

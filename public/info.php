@@ -22,7 +22,7 @@
           </div>
         </div>
   <div class="col-md-3 welcome-left">
-            <div class="menu-card card d-block d-md-none mb-0 text-center">
+            <div class="info-card card d-block d-md-none mb-0 text-center">
                 <div class="card-header collapsed" data-toggle="collapse" data-target="#info_list" aria-expanded="False">
                   <a class="h4">
                     Information
