@@ -40,7 +40,7 @@ body{
     text-align: center;
       color: #fff;
       font-weight:550;
-      background-color: #C42B2A;
+      background-color: rgba(251, 92, 19, 0.918);
 }
 
 
@@ -73,6 +73,9 @@ footer p > a:hover{
   background:rgba(0,0,0,.03);
   border:1px solid rgba(0,0,0,.125);
   border-bottom:1px solid white;
+}
+.ft-card .card-header{
+  cursor:pointer;
 }
 .ft-card .card-header:after {
    font-family: "Font Awesome 5 Free";

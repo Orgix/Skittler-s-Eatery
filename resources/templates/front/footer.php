@@ -54,11 +54,11 @@
           </p>
           <div id="col_1" class="collapse list">
             <p class="text-light">
-              <a href="#" class="text-black">About us</a>
-              <br><a href="#" class="text-black">Services</a>
-              <br><a href="#" class="text-black">Selected Work</a>
-              <br><a href="#" class="text-black">Get In Touch</a>
-              <br><a href="#" class="text-black">Careers</a>
+              <a href="info.php?page=about" class="text-black">About us</a>
+              <br><a href="info.php?page=faq" class="text-black">FAQs</a>
+              <br><a href="info.php?page=howitworks" class="text-black">How does it work</a>
+              <br><a href="info.php?page=terms" class="text-black">Terms & Conditions</a>
+              <br><a href="info.php?page=privacy" class="text-black">Privacy Policy</a>
             </p>
           </div>
         </div>
@@ -75,9 +75,11 @@
           </p>
           <div id="col_2" class="collapse list">
             <p class="text-light">
-              <a href="#" class="text-black">Menu</a>
+              <a href="menu.php" class="text-black">Menu</a>
               <br><a href="#" class="text-black">Our blog</a>
-              <br><a href="#" class="text-black">Real life</a>
+              <br><a href="info.php?page=methods" class="text-black">Payment Methods</a>
+              <br><a href="info.php?page=evaluation" class="text-black">Evaluation Policy</a>
+              <br><a href="info.php?page=sitemap" class="text-black">Sitemap</a>
             </p>
           </div>
         </div>

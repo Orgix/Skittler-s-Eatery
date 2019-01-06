@@ -15,10 +15,7 @@
                     $pageRequested = $_GET['page']; 
                     $pageInfo = get_info($pageRequested);
                     $title = $pageInfo[0];
-            }
-                // else{
-                //     redirect("index.php");
-                // }
+            
                 
             ?>
             <span class="h2 text-light"><?php echo $title ?></span>
@@ -46,5 +43,9 @@
 </div>
 
 </div>
-
+<?php
+                 }
+                 else{
+                     redirect("index.php");
+                 }?>
 <?php include(TEMPLATE_FRONT.DS."footer.php")?>

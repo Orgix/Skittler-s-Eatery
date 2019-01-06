@@ -1,0 +1,11 @@
+@media (min-width:992px){
+    .mw-50{
+        max-width:calc(50% - 15px);
+    } 
+}
+
+@media (min-width:768px){
+    .mw-25{
+        max-width:calc(25% - 15px);
+    }
+}

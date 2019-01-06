@@ -25,10 +25,10 @@
           <a href="menu.php" class="nav-link mr-3 mt-2 menu-item  p-0"><i class="fas fa-book-open mr-1"></i>Menu</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link mr-3 mt-2 menu-item  p-0"><i class="fas fa-info-circle mr-1"></i>About us</a>
+          <a href="info.php?page=about" class="nav-link mr-3 mt-2 menu-item  p-0"><i class="fas fa-info-circle mr-1"></i>About us</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link mr-3 mt-2 menu-item  p-0"><i class="fas fa-phone mr-1"></i>Contact</a>
+          <a href="info.php?page=contact" class="nav-link mr-3 mt-2 menu-item  p-0"><i class="fas fa-phone mr-1"></i>Contact</a>
         </li>
         <li class='nav-item'>
           <a href='register.php' class='nav-link  mr-1  ml-md-2 mt-2   menu-item  p-0'><i class="fas fa-sign-in-alt mr-1"></i>Sign In</a>

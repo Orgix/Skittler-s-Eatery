@@ -50,6 +50,10 @@
     .info-list > li.selected > a{
         color:#fff;
     }  
+    #accordion .card > .card-header{
+        cursor:pointer;
+    }
+   
 @media(min-width:768px){
     .info-list{
         display:block !important;
