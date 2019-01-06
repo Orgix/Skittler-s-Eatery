@@ -3,7 +3,7 @@
 
 }
 
-.info-list > li{    
+.info-list > li{
     padding:1rem 0;
     margin-bottom:3px;
     background:#fff;
@@ -16,7 +16,7 @@
       display:block;
       text-decoration:none;
       color:#212121;
-      
+
   }
   .info-title{
     background-image:url("../img/1-1949-.jpg");
@@ -46,10 +46,21 @@
     }
     .info-list > li.selected{
         background-color:transparent;
-    } 
+    }
     .info-list > li.selected > a{
         color:#fff;
-    }  
+    }
+    .info-text ul > li{
+      font-size:1.2rem;
+      text-align:justify;
+    }
+	  .accordion a{
+		   text-decoration: none;
+       color: #212121;
+	  }
+    .accordion h4{
+      font-weight: bold;
+    }
 @media(min-width:768px){
     .info-list{
         display:block !important;
@@ -79,6 +90,6 @@
     .info-list > li{
         border-radius:0;
         margin-bottom:1px;
-      } 
+      }
 
 }
