@@ -11,11 +11,7 @@
       </div>
      
       <ul class="category_list m-0 p-0 w-100">
-        <li class=" "><a href="#category_1">Category 1</a></li>
-        <li class=" "><a href="#category_2">Category 2</a></li>
-        <li class=" "><a href="#category_3">Category 3</a></li>
-        <li class=" "><a href="#category_4">Category 4</a></li>
-        <li class=" "><a href="#category_5">Category 5</a></li>
+        <?php get_categories(); ?>
       </ul>
     
     </div>

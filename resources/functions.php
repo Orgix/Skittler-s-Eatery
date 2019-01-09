@@ -49,7 +49,7 @@ if clause to make sure our queries work adequately!*/
 		die("QUERY FAILED: ". mysqli_error($connection));
 	}else{ /* this else is completely optional. It can be ommited after
 		testing is done. Else it can be appended as a response to a log file*/
-		// echo "query succeeded~!";
+		echo "query succeeded~!";
 	}
 }
 
@@ -66,6 +66,19 @@ function fetch_array($result_set){ // fetch function
 function count_rows($query){
 	return mysqli_num_rows($query);
 }
+
+function property_does_exist($column , $property){
+$property = escape_string($property);
+$query = "SELECT user_id FROM customers WHERE $column='{$property}'";
+	$result = query($query);
+	confirm($result);
+
+	if(count_rows($result) > 0){
+		return true;
+	}
+	return false;
+}
+
 /********************************HELPER FUNCTIONS END*************************/
 
 
@@ -99,26 +112,29 @@ DELIMETER;
 
 }
 
+
+
+
+/********************************* PRODUCTS END ****************************/
+
+/********************************* CATEGORIES FUNCTIONS*********************/
 function get_categories(){
-	/*Alter category.*/
-	$query = query("SELECT * FROM categories");
+	
+	$query = query("SELECT category_name FROM categories");
 
 
 	confirm($query);
 
 	while($row = fetch_array($query)){
+		$name = $row['category_name'];
 		$category_links = <<<DELIMETER
-		 <a href='category.php?id={$row['cat_id']}' class='list-group-item'>{$row['cat_title']}</a>
+		 <li class=" "><a href="#{$name}">{$name}</a></li>
 DELIMETER;
 	echo $category_links;
 	}
 
 }
 
-
-/********************************* PRODUCTS END ****************************/
-
-/********************************* CATEGORIES FUNCTIONS*********************/
 function get_category_items($id){
 	echo $id;
 
@@ -148,27 +164,140 @@ START;
 
 
 /*************************************************Users functions********************************************/
+function handle_login_mistake(){
+	set_message("The combination of username and password is wrong!");
+	//redirect("register.php");
+}
 
 function login_user(){
 
-	if(isset($_POST['submit'])){
-		$username = escape_string($_POST['username']);
-		$password = escape_string($_POST['password']);
-
-		$query = query("SELECT username,user_password FROM users WHERE username='{$username}' AND user_password='{$password}'  ");
-
-		confirm($query);
-
-		if(count_rows($query) == 0){
-			set_message("The combination of username and password is wrong!");
-			redirect("login.php");
-		}else{
-			$_SESSION['username'] = $username;
-			redirect("admin/");
+	if(isset($_POST['login'])){
+		
+		$email = escape_string($_POST['login_user_email']);
+		$password = escape_string($_POST['login_user_password']);
+		
+		if(empty($email) || empty($password)){
+			set_message("This fields cannot be empty");
+			redirect("register.php");
+			return ; 
 		}
 
-	}
+		$query = query("SELECT * FROM customers WHERE user_email='{$email}'");
 
+		confirm($query);
+		
+		
+
+		if(count_rows($query) == 0){
+			echo "no entries";
+			handle_login_mistake();
+		}else{
+			
+			$row = fetch_array($query);
+			
+			$verified = password_verify($password, $row['user_password']);
+
+			if($verified){
+				$_SESSION['first_name'] = $row['user_first_name'];
+				$_SESSION['last_name'] = $row['user_last_name'];
+				redirect("user.php");
+			}else{
+				handle_login_mistake();
+			}
+		}
+	}
+}
+function handle_register(){
+	if(isset($_POST['register'])){
+	
+	$first_name = trim($_POST['user_first_name']);
+	$last_name = trim($_POST['user_last_name']);
+	$username = trim($_POST['username']);
+	$email = trim($_POST['user_email']);
+	$password = trim($_POST['user_password']);
+    $confirm_password = trim($_POST['user_password_confirm']);
+	echo "pass before hash: ".$password."\n";
+	$error = [
+	   'first_name' => '',
+	   'last_name' => '',
+	   'email' =>'',
+	   'password'=>'',
+	   'confirm_password'=>''
+   ];
+
+   if(strlen($username) <= 4 ){
+	   $error['username'] = 'Username needs to be longer than 4 characters.';
+   }
+   if(empty($username)){
+	   $error['username'] = 'Username cannot be empty';
+   }
+   if(property_does_exist('username',$username)){
+	   $error['username'] = 'Username already exists';
+   }
+
+	
+   if(empty($email)){
+	   $error['email'] = 'Email cannot be empty';
+   }
+   if(property_does_exist('user_email',$email)){
+	   $error['email'] = 'Email already exists, <a href="index.php#loginWindow">Login</a>';
+   }
+   
+   if(strlen($password) <= 6){
+	   $error['password'] = 'Password cannot be less than 7 characters long';
+   }
+   if(empty($password) || empty($confirm_password)){
+	   $error['password']='Password fields cannot be empty';
+   }
+   
+   if($password != $confirm_password){
+	   $error['confirm_password'] = 'The passwords given did not match';
+   }
+
+   foreach($error as $key => $value){
+	   if(empty($value)){
+		   unset($error[$key]);
+	   }
+   }
+   if(empty($error)){
+	   $user_info = [
+		   'first_name'=>$first_name,
+		   'last_name' =>$last_name,
+		   'username' =>$username,
+		   'password' =>$password,
+		   'email' => $email
+	   ];
+	   register_user($user_info);
+	   redirect("register.php");
+   }
+    else{
+		return $error;
+	}
+}
+}
+
+function register_user($arr){
+	global $connection;
+
+	$first_name = escape_string($arr['first_name']);
+	$last_name = escape_string($arr['last_name']);
+	$username = escape_string($arr['username']);
+	$email = escape_string($arr['email']);
+    $password= $arr['password'];
+	
+	
+	
+    
+    $hashed_password = escape_string(password_hash($password, PASSWORD_DEFAULT));
+    
+    $query = 'INSERT INTO customers (username, user_first_name, user_last_name, user_email, user_password, user_role) ';
+    $query .= "VALUES ('{$username}','{$first_name}','{$last_name}','{$email}', '{$hashed_password}', 'user')";
+
+    $register_user = query($query);
+    confirm($register_user);
+
+	        
+	    
 }
 
 
@@ -243,16 +372,6 @@ function get_info($message){
 }
 
 function generate_items($pages, $pageRequested){
-	/*<li class="selected"><a href="info.php?page=about">About Us</a></li>
-                <li class=""><a href="info.php?page=faq">FAQs</a></li>
-                <li class=""><a href="info.php?page=howitworks">How does it work</a></li>
-                <li class=""><a href="info.php?page=contact">Contact Us</a></li>
-                <li class=""><a href="info.php?page=terms">Terms & Conditions</a></li>
-                <li class=""><a href="info.php?page=privacy" >Privacy Policy</a></li>
-                <li class=""><a href="info.php?page=methods">Payment Methods</a></li>
-                <li class=""><a href="info.php?page=evaluation">Evaluation Policy</a></li>
-				<li class=""><a href="info.php?page=sitemap">Sitemap</a></li> */
-				
 	for($i= 0; $i < count($pages); $i++){
 		if($pages[$i][0] == $pageRequested){
 			echo '<li class="selected"><a href="info.php?page='.$pages[$i][0].'">'.$pages[$i][1].'</a></li>';
@@ -262,7 +381,7 @@ function generate_items($pages, $pageRequested){
 		}
 	}
 }
-/***************************************************END of users' functions ***********************************/
+/***************************************************END of page functions ***********************************/
 
 
 

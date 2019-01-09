@@ -31,6 +31,9 @@
       case 'info':
         $include = $link.'info.css';
         break;
+      case 'user':
+        $include = $link.'user.css';
+        break;
     }
    
     echo $include.'">';

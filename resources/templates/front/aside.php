@@ -1,5 +1,5 @@
-<div class="aside col-md-12 col-lg-4 col-xl-3 pt-4">
-        <div class="card">
+<div class="aside col-md-12 col-lg-4 col-xl-3 pt-4" id="loginWindow">
+        <!-- <div class="card">
           <div class="card-header">
             <h4>Product Search</h4>
           </div>
@@ -15,40 +15,47 @@
               </div>
             </form>
           </div>
-        </div>
-        <div class="card mt-4">
+        </div> -->
+        <div class="card">
           <div class="card-header">
             <i class="fas fa-users fa-2x"></i>
             <span class="h3 font-weight-bold ml-2">Sign In</span>
           </div>
           <div class="card-body">
-            <form action="includes/login.php" method="post">
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="fa fa-user text-dark"></i></div>
+          <?php if(isset($_SESSION['first_name']) && $_SESSION['last_name']): ?>  
+                      <span class="h6"> Logged in as <?php echo $_SESSION['first_name'].' '.$_SESSION['last_name']; ?></span>
+                        <a href='logout.php' class='btn btn-primary'>Logout</a>
+          <?php else: ?>
+            <form method="post" >
+              <?php login_user(); ?>
+              <span class='text-center alert-warning'><?php echo display_message(); ?></h2>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-at"></i></div>
+                    </div>
+                    <input name="user_email" type="email" class="form-control" placeholder="Enter email">
                   </div>
-                  <input name="username" type="text" class="form-control" placeholder="Enter username">
                 </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="fas fa-key text-dark"></i></div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-key text-dark"></i></div>
+                    </div>
+                    <input type="password" name="user_password" class="form-control" placeholder="Enter password">
                   </div>
-                  <input type="password" name="user_password" class="form-control" placeholder="Enter password">
                 </div>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary form-control" name="login" type="submit">
-                  Submit
-                </button>
-              </div>
+                <div class="form-group">
+                  <button class="btn btn-primary form-control" name="login" type="submit">
+                    Submit
+                  </button>
+                </div>
 
-              <div class="ml-1">
-                <span class="h6"><a href=''>Not a member yet? Join us!</a></span>
-              </div>
-            </form>
+                <div class="ml-1">
+                  <span class="h6"><a href=''>Not a member yet? Join us!</a></span>
+                </div>
+              </form>
+            <?php endif; ?>
           </div>
         </div>
         <div class="card mt-2 mb-2">

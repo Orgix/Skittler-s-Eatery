@@ -19,29 +19,27 @@
     <div class="collapse navbar-collapse flex-grow-1 pb-1" id="myNavbar">
       <ul class="navbar-nav ml-auto flex-nowrap font-weight-bold">
         <li class="nav-item">
-          <a href="index.php" class="nav-link mr-3 mt-2 menu-item  p-0"><i class="fas fa-home mr-1"></i>Home</a>
+          <a href="index.php" class="nav-link mr-3 mt-2 menu-item  p-0">Home</a>
         </li>
         <li class="nav-item">
-          <a href="menu.php" class="nav-link mr-3 mt-2 menu-item  p-0"><i class="fas fa-book-open mr-1"></i>Menu</a>
+          <a href="menu.php" class="nav-link mr-3 mt-2 menu-item  p-0">Menu</a>
         </li>
         <li class="nav-item">
-          <a href="info.php?page=about" class="nav-link mr-3 mt-2 menu-item  p-0"><i class="fas fa-info-circle mr-1"></i>About us</a>
+          <a href="info.php?page=about" class="nav-link mr-3 mt-2 menu-item  p-0"></i>About us</a>
         </li>
         <li class="nav-item">
-          <a href="info.php?page=contact" class="nav-link mr-3 mt-2 menu-item  p-0"><i class="fas fa-phone mr-1"></i>Contact</a>
+          <a href="info.php?page=contact" class="nav-link mr-3 mt-2 menu-item  p-0">Contact</a>
         </li>
-        <li class='nav-item'>
-          <a href='register.php' class='nav-link  mr-1  ml-md-2 mt-2   menu-item  p-0'><i class="fas fa-sign-in-alt mr-1"></i>Sign In</a>
-        </li>
+        <?php if(isset($_SESSION['first_name']) && isset($_SESSION['last_name'])): ?>
         <div class="dropdown d-none d-md-block">
         <button class="dropdown-toggle btn btn-danger text-white ml-md-2 font-weight-bold" type="button" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-user"></i><span class="pl-2">Username</span>
+          <i class="fa fa-user"></i><span class="pl-2"><?php echo $_SESSION['last_name']; ?></span>
         </button>
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-user mr-1 mr-md-2"></i>My profile</a></li>
+            <li><a class="dropdown-item font-weight-bold" href="user.php"><i class="fa fa-user mr-1 mr-md-2"></i>My profile</a></li>
             <li><a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-shopping-basket mr-1 mr-md-2"></i>My orders</a></li>
-            <li><a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-shopping-cart mr-1 mr-md-2"></i>My cart</a></li>
-            <li><a class="dropdown-item font-weight-bold" href="#"><i class="fas fa-sign-out-alt mr-1 mr-md-2"></i>Logout</a></li>
+            <li><a class="dropdown-item font-weight-bold" href="cart.php"><i class="fa fa-shopping-cart mr-1 mr-md-2"></i>My cart</a></li>
+            <li><a class="dropdown-item font-weight-bold" href="logout.php"><i class="fas fa-sign-out-alt mr-1 mr-md-2"></i>Logout</a></li>
 
           </ul>
       </div>
@@ -49,7 +47,12 @@
         <hr class="toggler-divider">
         <div class="text-center"><span class="h4">Username</span></div>
         <ul class=""></ul>
-</li>
+      </li>
+      <?php else: ?>
+      <li class='nav-item'>
+          <a href='register.php' class='nav-link  mr-1  ml-md-2 mt-2   menu-item  p-0'><i class="fas fa-sign-in-alt mr-1"></i>Sign In</a>
+        </li>
+    <?php endif; ?>
       </ul>
     </div>
   </nav>
