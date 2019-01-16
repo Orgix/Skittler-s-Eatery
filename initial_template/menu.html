@@ -17,7 +17,26 @@
 </head>
 
 <body>
+  <div id="mySidenav" class="sidenav">
+     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="cart-header">
+        <i class="fas fa-utensils fa-sm"></i>	Your Cart
+      </div>
+      <div class="cart-list">
+          <ul>
+            
+          </ul>
+      </div>
+      <div class="total-cost">
+          <span>Cost: </span><span>0</span>
+      </div>
+        <button class="order-submit">Continue</button>
+  </div>
 
+  <!-- Use any element to open the sidenav -->
+  <span id="cart-button" onclick="openNav()"><i class="fas fa-shopping-cart fa-2x"></i></span>
+
+  <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 
 
 
@@ -65,7 +84,7 @@
                   <li><a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-shopping-basket mr-1 mr-md-2"></i>My orders</a></li>
                   <li><a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-shopping-cart mr-1 mr-md-2"></i>My cart</a></li>
                   <li><a class="dropdown-item font-weight-bold" href="#"><i class="fas fa-sign-out-alt mr-1 mr-md-2"></i>Logout</a></li>
-      
+
                 </ul>
             </div>
             <li class="d-block d-md-none" id="small-breakpoint">
@@ -90,7 +109,7 @@
       <div class="my-3">
         <span class="h3">Menu categories</span>
       </div>
-     
+
       <ul class="category_list m-0 p-0 w-100">
         <li class=" "><a href="#category_1">Category 1</a></li>
         <li class=" "><a href="#category_2">Category 2</a></li>
@@ -98,7 +117,7 @@
         <li class=" "><a href="#category_4">Category 4</a></li>
         <li class=" "><a href="#category_5">Category 5</a></li>
       </ul>
-    
+
     </div>
 <div class="col-lg-9 p-0 ">
 
