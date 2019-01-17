@@ -3,7 +3,7 @@
 
 
 <?php 
-  if(!isset($_SESSIONS['items'])){
+  if(!isset($_SESSION['items'])){
     redirect("index.php");
   }
 ?>

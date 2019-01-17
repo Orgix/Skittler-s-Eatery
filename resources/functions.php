@@ -222,8 +222,6 @@ function login_user(){
 			$verified = password_verify($password, $row['user_password']);
 			
 			if($verified){
-				$_SESSION['first_name'] = $row['user_first_name'];
-				$_SESSION['last_name'] = $row['user_last_name'];
 				$_SESSION['items'] = $row;
 				redirect("user.php");
 			}else{
