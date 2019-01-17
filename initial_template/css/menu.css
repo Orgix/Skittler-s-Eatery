@@ -119,6 +119,7 @@ margin:14px 0;
   color: white;
   transition: margin-right .5s;
   z-index: 20;
+  cursor: pointer;
 }
 .cart-header{
   padding-top: 4px;
