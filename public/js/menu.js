@@ -34,6 +34,24 @@ const manageTabs = () =>{ /* Function that closes rest of the tabs that are open
   });
 }
 
+const openNav = () => {
+  var w= window.innerWidth;
+  
+    if (w < 768) {
+      document.getElementById("mySidenav").style.width = "100%";
+      document.getElementById("cart-button").style.marginRight = "100%";
+    } else {
+      document.getElementById("mySidenav").style.width = "320px";
+      document.getElementById("cart-button").style.marginRight = "320px";
+    }
+  }
+  
+  /* Set the width of the side navigation to 0 */
+  const closeNav = ()=> {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("cart-button").style.marginRight = "0"
+  }
+
 Array.prototype.map.call(menu_cards, card=>{
 	card.addEventListener("click",(card)=>{
       currentCard = card.target.classList.contains("h3") ? card.target.parentNode.classList : card.target.classList

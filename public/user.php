@@ -2,12 +2,18 @@
 <?php include(TEMPLATE_FRONT.DS."header.php"); ?>
 
 
+<?php 
+  if(!isset($_SESSIONS['items'])){
+    redirect("index.php");
+  }
+?>
+
 <div class="container-fluid welcome-container">
   <div class="row">
   <div class="col-lg-2 welcome-left">
     <div class="mt-3 mb-3 mt-lg-5">
         <i class="fas fa-user-circle fa-6x"></i>
-        <span class="username mt-2 d-block"><?php echo $_SESSION['first_name'].' '.$_SESSION['last_name']; ?></span>
+        <span class="username mt-2 d-block"><?php echo $_SESSION['items']['username']; ?></span>
     </div>
   </div>
 

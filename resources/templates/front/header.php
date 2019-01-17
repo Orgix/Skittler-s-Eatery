@@ -42,12 +42,19 @@
     
     if($pageName == 'index') echo 'Home';
     else{
+      
       echo ucfirst($pageName);
+      
     }  
+    if($pageName =='user'){
+      echo isset($_SESSION['items']) ? '- '.strval($_SESSION['items']['username']) : '';
+    }
   ?>
 </title>
 </head>
 
 <body>
-
+<?php 
+  if($pageName == 'menu') include(TEMPLATE_FRONT.DS."cart_widget.php");
+?>
 <?php include(TEMPLATE_FRONT.DS."top_nav.php"); ?>

@@ -30,10 +30,10 @@
         <li class="nav-item">
           <a href="info.php?page=contact" class="nav-link mr-3 mt-2 menu-item  p-0">Contact</a>
         </li>
-        <?php if(isset($_SESSION['first_name']) && isset($_SESSION['last_name'])): ?>
+        <?php if(isset($_SESSION['items'])): ?>
         <div class="dropdown d-none d-md-block">
         <button class="dropdown-toggle btn btn-danger text-white ml-md-2 font-weight-bold" type="button" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-user"></i><span class="pl-2"><?php echo $_SESSION['last_name']; ?></span>
+          <i class="fa fa-user"></i><span class="pl-2"><?php echo $_SESSION['items']['user_last_name']; ?></span>
         </button>
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item font-weight-bold" href="user.php"><i class="fa fa-user mr-1 mr-md-2"></i>My profile</a></li>

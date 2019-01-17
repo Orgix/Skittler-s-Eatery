@@ -120,62 +120,89 @@ DELIMETER;
 /********************************* CATEGORIES FUNCTIONS*********************/
 function get_categories(){
 	
-	$query = query("SELECT category_name FROM categories");
-
-
-	confirm($query);
-
+	$query = query("SELECT id,category_name FROM categories");
+	$list = array();
+	$category_links = '';
 	while($row = fetch_array($query)){
 		$name = $row['category_name'];
-		$category_links = <<<DELIMETER
+		$category_links .= <<<DELIMETER
 		 <li class=" "><a href="#{$name}">{$name}</a></li>
 DELIMETER;
-	echo $category_links;
+	
+     $list[] = [$row['id'], $row['category_name']];
 	}
-
+	
+	return [$list, $category_links];
 }
 
 function get_category_items($id){
-	echo $id;
 
-	$query = query("SELECT * FROM products WHERE product_category_id =".escape_string($id)." ");
-	confirm($query);
+	$query = query("SELECT * FROM items WHERE category_id =".$id." ");
 
 	while($row = fetch_array($query)){
-		$short_desc = substr($row['product_short_desc'],0,60);
+		
 		$item = <<<START
-		 <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="{$row['product_image']}" alt="">
-                    <div class="caption">
-                        <h3>{$row['product_title']}</h3>
-                        <p>{$short_desc}</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+		<div class="col-md-6 col-xl-4">
+        <div class="card">
+          <div class="card-header">
+            <span class="food-title w-25">{$row['Item_name']}</span>
+              <span class="food-cost float-right">{$row['Cost']}&euro;</span>
+        </div>
+          <div class="card-body">
+            <span class="food-description">{$row['Description']}</span>
+          </div>
+          <div class="card-footer">
+            <span class="btn btn-info float-right">Add</span>
+          </div>
+        </div>
+      </div>
 START;
             echo $item;
 	}
 }
 
+function fetch_categories_with_items($categories){
+	/* This function will query the database using the id from the array  get_categories returned. Meaning that for 4 categories, the database will
+	queried for a total of 4 times. */
+
+	for($i=0;$i< count($categories);$i++){
+		$cat_name = $categories[$i][1];
+		$displayed_cat =  <<<DELIMETER
+		<div class="menu-card card d-block d-md-none mb-0 text-left ">
+      <div class="card-header collapsed" data-toggle="collapse" data-target="#{$cat_name}" aria-expanded="False" >
+        <a class="h3">
+          {$cat_name}
+        </a>
+      </div>
+    </div>
+    <div class="row collapse flexlist" id="category_1">
+      <div class="col-12 w-100  my-2 category_title d-none d-md-block">
+        <span class="h3">{$cat_name}</span>
+	  </div>
+	  
+DELIMETER;
+		echo $displayed_cat;
+		get_category_items($categories[$i][0]);
+		echo "</div>";
+	}
+	
+}
 
 
 /*************************************************Users functions********************************************/
 function handle_login_mistake(){
 	set_message("The combination of username and password is wrong!");
-	//redirect("register.php");
+	redirect("register.php");
 }
 
 function login_user(){
 
 	if(isset($_POST['login'])){
 		
-		$email = escape_string($_POST['login_user_email']);
-		$password = escape_string($_POST['login_user_password']);
-		
+		$email = trim(escape_string($_POST['login_user_email']));
+		$password = trim(escape_string($_POST['login_user_password']));
+		echo $email;
+		echo $password;
 		if(empty($email) || empty($password)){
 			set_message("This fields cannot be empty");
 			redirect("register.php");
@@ -189,17 +216,15 @@ function login_user(){
 		
 
 		if(count_rows($query) == 0){
-			echo "no entries";
 			handle_login_mistake();
 		}else{
-			
 			$row = fetch_array($query);
-			
 			$verified = password_verify($password, $row['user_password']);
-
+			
 			if($verified){
 				$_SESSION['first_name'] = $row['user_first_name'];
 				$_SESSION['last_name'] = $row['user_last_name'];
+				$_SESSION['items'] = $row;
 				redirect("user.php");
 			}else{
 				handle_login_mistake();
@@ -283,12 +308,12 @@ function register_user($arr){
 	$last_name = escape_string($arr['last_name']);
 	$username = escape_string($arr['username']);
 	$email = escape_string($arr['email']);
-    $password= $arr['password'];
+    $password= escape_string($arr['password']);
 	
 	
 	
     
-    $hashed_password = escape_string(password_hash($password, PASSWORD_DEFAULT));
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     
     $query = 'INSERT INTO customers (username, user_first_name, user_last_name, user_email, user_password, user_role) ';
     $query .= "VALUES ('{$username}','{$first_name}','{$last_name}','{$email}', '{$hashed_password}', 'user')";

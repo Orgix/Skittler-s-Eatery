@@ -33,6 +33,9 @@
               </ul>
               <div class="tab-content" id="myTabContent">
                   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                      <div class="w-100 text-center">
+                        <span class="h5"><?php ?></span>
+                      </div>
                       <h3 class="register-heading">Register</h3>
                       <div class="row register-form">
                           

@@ -2,6 +2,8 @@
 <?php include(TEMPLATE_FRONT.DS."header.php"); ?>
 
 
+
+
 <div class="container-fluid welcome-container">
   <div class="row">
   <div class="col-lg-3 position-relative d-none d-lg-block welcome-left">
@@ -11,7 +13,9 @@
       </div>
      
       <ul class="category_list m-0 p-0 w-100">
-        <?php get_categories(); ?>
+        <?php $category_list = get_categories(); 
+          echo $category_list[1];
+          ?>
       </ul>
     
     </div>
@@ -22,7 +26,9 @@
   </div>
 
   <div class="container-fluid menu" >
-  <div class="menu-card card d-block d-md-none mb-0 text-left ">
+    <?php fetch_categories_with_items($category_list[0]);?>
+  
+  <!-- <div class="menu-card card d-block d-md-none mb-0 text-left ">
       <div class="card-header collapsed" data-toggle="collapse" data-target="#category_1" aria-expanded="False" >
         <a class="h3">
           Category 1
@@ -586,11 +592,11 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 
 </div>
 </div>
 
-</div>
+</div> 
 <?php include(TEMPLATE_FRONT.DS."footer.php"); ?>
