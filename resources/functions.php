@@ -143,20 +143,25 @@ function get_category_items($id){
 		
 		$item = <<<START
 		<div class="col-md-6 col-xl-4">
-        <div class="card">
-          <div class="card-header">
-            <span class="food-title w-25">{$row['Item_name']}</span>
-              <span class="food-cost float-right">{$row['Cost']}&euro;</span>
-        </div>
-          <div class="card-body">
-            <span class="food-description">{$row['Description']}</span>
+          <div class="card menu-item">
+            <div class="card-header">
+              <span class="food-title w-25">{$row['Item_name']}</span>
+				<span class="food-cost float-right">{$row['Cost']}&euro;</span>
+				<input type="hidden" class="food_code" name="id" value="{$row['id']}">
           </div>
-          <div class="card-footer">
-            <span class="btn btn-info float-right">Add</span>
-          </div>
-        </div>
-      </div>
+            <div class="card-body">
+              <span class="food-description">{$row['Description']}</span>
+			</div>
+			
+            <div class="card-footer">
 START;
+		 
+			if(isset($_SESSION['items'])){
+				$item .= '<span class="btn float-right add-button">Add</span>';
+			}
+			$item .= '</div></div></div>';
+			
+
             echo $item;
 	}
 }
@@ -169,16 +174,16 @@ function fetch_categories_with_items($categories){
 		$cat_name = $categories[$i][1];
 		$displayed_cat =  <<<DELIMETER
 		<div class="menu-card card d-block d-md-none mb-0 text-left ">
-      <div class="card-header collapsed" data-toggle="collapse" data-target="#{$cat_name}" aria-expanded="False" >
-        <a class="h3">
-          {$cat_name}
-        </a>
+        <div class="card-header collapsed" data-toggle="collapse" data-target="#{$cat_name}" aria-expanded="False" >
+          <a class="h3">
+            {$cat_name}
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="row collapse flexlist" id="category_1">
-      <div class="col-12 w-100  my-2 category_title d-none d-md-block">
-        <span class="h3">{$cat_name}</span>
-	  </div>
+      <div class="row collapse flexlist" id="{$cat_name}">
+        <div class="col-12 w-100  my-2 category_title d-none d-md-block">
+          <span class="h3">{$cat_name}</span>
+        </div>
 	  
 DELIMETER;
 		echo $displayed_cat;
@@ -323,37 +328,143 @@ function register_user($arr){
 	    
 }
 
+/********************************************************AJAX FUNCTIONS *********************************************************/
+/*
+Ajax functions have something special. They do not have sessions in them, so in order to interact with databases, one needs to connect again and the session needs to be reopened.
 
-function send_message(){ // SETTING ON PHP.INI .... otherwise the email will never be sent
-	if(isset($_POST['submit'])){
+*/
 
-		$to = 'tnikos28@gmail.com';
 
-		$from_name = $_POST['name'];
-		$subject = $_POST['email'];
-		$email = $_POST['email'];
-		$message = $_POST['message'];
 
-		$headers = "MIME-Version: 1.0"."\r\n";
-		$headers .= 'From: {$email}'.'\r\n';
-		$headers .= 'Content-type: text/html; charset=utf-8'.'\r\n';
 
-		$result = mail($to, $subject, $message, $headers);
+function get_user_cart(){
+	if(isset($_POST['retrieve'])){
+		require_once("config.php");
 
-		if(!$result){
-			set_message("Could not send the email");
-
-		}else{
-
-			set_message("Email sent!");
-
-		}
-		redirect("contact.php");
+	$query = "SELECT cart_row,item_id FROM cart WHERE user={$_SESSION['items']['user_id']}";
+	$result = mysqli_query($connection,$query);
+	$item_ids = array();
+	$table_data = array();
+	while($row = fetch_array($result)){
+		array_push($item_ids, [$row['item_id'], $row['cart_row']]);
 	}
+	$query = "SELECT Item_name,Description,Cost FROM items WHERE id=";
+	for($i=0;$i<count($item_ids);$i++){
+		$food_item = mysqli_query($connection, $query.$item_ids[$i][0]);
+		$row = fetch_array($food_item);
+		array_push($table_data, ["item_name"=>$row['Item_name'],"item_description"=>$row['Description'],"item_cost"=>$row['Cost'],"cart_id"=>$item_ids[$i][1]]);
+	}
+	echo json_encode($table_data);
+}
+}
+
+get_user_cart();
+function add_to_cart(){
+	if(isset($_POST['code'])){
+		require_once("config.php");
+		
+		
+		$user = $_SESSION['items']['user_id'];
+		$food_id= $_POST['code'];
+		$query = "INSERT INTO cart (user,item_id) VALUES ({$user},{$food_id})";
+		$submit_cart = mysqli_query($connection, $query);
+		echo(mysqli_insert_id($connection));
+	}
+	
+}
+add_to_cart();
+
+function delete_entry(){
+	if(isset($_POST['del_code'])){
+		require_once("config.php");
+
+		$id = $_POST['del_code'];
+	$query = "DELETE FROM cart WHERE cart_row = {$id}";
+	$result = mysqli_query($connection, $query);
+	}
+}
+delete_entry();
+
+
+function confirmOrder(){
+	if(isset($_POST['order'])){
+		require_once("config.php");
+		$form_list = array();
+		$id = $_SESSION['items']['user_id'];
+		$items = mysqli_real_escape_string($connection,json_encode($_POST['food_titles']));
+		
+		parse_str($_POST['formContents'],$form_list);
+		
+		$address = $form_list['address'];
+		$floor = $form_list['floor'];
+		$doorbell = $form_list['doorbell'];
+		$telephone = $form_list['phone'];
+		$comments = mysqli_real_escape_string($connection, $form_list['extraInfo']);
+
+		$order_cost = $_POST['order_cost'];
+
+		$query = "INSERT INTO orders (user_id,items_ordered,address,floor,telephone,comment,order_cost)";
+		$query .= " VALUES({$id},'{$items}','{$address}','{$floor}','{$telephone}','{$comments}','{$order_cost}')";
+
+		$result = mysqli_query($connection, $query);
+		if($result){
+			echo "success";
+			$query = "DELETE FROM cart WHERE user={$id}";
+			$result = mysqli_query($connection, $query);
+		}
+		else{
+			die("QUERY FAILED: ". mysqli_error($connection));
+		}
+	
+	
+	}
+}
+confirmOrder();
+
+
+/****************************************************************END OF AJAX FUNCTIONS***************************************************************** */
+/********************************************************** PAGE FUNCTIONS *******************************************/
+function fetch_orders(){
+	$id = $_SESSION['items']['user_id'];
+
+$query = "SELECT id,items_ordered,comment,order_status,order_cost FROM orders WHERE user_id={$id}";
+
+$result = query($query);
+$i= 1;
+while($row= fetch_array($result)){
+	$item = <<<ITEM
+	
+	<div class="card">
+	
+	  <div class="card-header" role="tab" id="heading{$i}">
+		<a data-toggle="collapse" data-parent="#orders" href="#order{$i}" aria-expanded="false"
+		  aria-controls="collapseOne1">
+		  <h4 class="float-left">
+		  	Order No # {$row['id']}
+		  </h4>
+		  <span class="float-right">STATUS: {$row['order_status']}</span>
+		</a>
+	  </div>
+	  
+	  <div id="order{$i}" class="collapse show" role="tabpanel" aria-labelledby="heading{$i}" data-parent="#orders">
+		<div class="card-body">
+		<span class="font-weight-bold"> Your ordered:   </span>
+		<p>
+			{$row['items_ordered']}
+		  </p>
+		  <p>Cost: <span class="font-weight-bold">{$row['order_cost']}</span>&euro;</p>
+		</div>
+	  </div>
+	</div>
+ITEM;
+	echo $item;
+	$i++;
+}
+
 }
 
 
-/********************************************************** PAGE FUNCTIONS *******************************************/
+
 function get_info($message){
   /*Function that will return the title depending on the query 
 	parameter. Used on info.php for the info-title mark-up 

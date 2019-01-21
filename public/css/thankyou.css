@@ -1,0 +1,8 @@
+@media(max-width: 768px){
+    .thank-text{
+        font-size:20px;
+    }
+    .delivery-time{
+        font-size:16px;
+    }
+}

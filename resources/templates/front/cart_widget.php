@@ -11,6 +11,9 @@
       <div class="total-cost">
           <span>Cost: </span><span>0</span>
       </div>
-        <button class="order-submit">Continue</button>
   </div>
+
+  <!-- Use any element to open the sidenav -->
   <span id="cart-button" onclick="openNav()"><i class="fas fa-shopping-cart fa-2x"></i></span>
+
+  <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->

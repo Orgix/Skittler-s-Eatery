@@ -34,6 +34,9 @@
       case 'user':
         $include = $link.'user.css';
         break;
+      case 'thankyou':
+        $include = $link.'thankyou.css';
+        break;
     }
    
     echo $include.'">';
@@ -55,6 +58,6 @@
 
 <body>
 <?php 
-  if($pageName == 'menu') include(TEMPLATE_FRONT.DS."cart_widget.php");
+ if($pageName == 'menu') include(TEMPLATE_FRONT.DS."cart_widget.php");
 ?>
 <?php include(TEMPLATE_FRONT.DS."top_nav.php"); ?>

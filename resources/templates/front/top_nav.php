@@ -18,6 +18,15 @@
     </div>
     <div class="collapse navbar-collapse flex-grow-1 pb-1" id="myNavbar">
       <ul class="navbar-nav ml-auto flex-nowrap font-weight-bold">
+        <?php
+          if(isset($_SESSION['items'])){
+            if($_SESSION['items']['user_role'] == "Admin"){
+              echo "<li class='nav-item'>
+              <a href='administrator/' class='nav-link mr-5 mt-2 menu-item  p-0'>Admin Panel</a>
+            </li>";
+            }
+          }
+        ?>
         <li class="nav-item">
           <a href="index.php" class="nav-link mr-3 mt-2 menu-item  p-0">Home</a>
         </li>
@@ -37,8 +46,7 @@
         </button>
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item font-weight-bold" href="user.php"><i class="fa fa-user mr-1 mr-md-2"></i>My profile</a></li>
-            <li><a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-shopping-basket mr-1 mr-md-2"></i>My orders</a></li>
-            <li><a class="dropdown-item font-weight-bold" href="cart.php"><i class="fa fa-shopping-cart mr-1 mr-md-2"></i>My cart</a></li>
+            <li><a class="dropdown-item font-weight-bold" href="user.php?mode=orders"><i class="fa fa-shopping-basket mr-1 mr-md-2"></i>My orders</a></li>
             <li><a class="dropdown-item font-weight-bold" href="logout.php"><i class="fas fa-sign-out-alt mr-1 mr-md-2"></i>Logout</a></li>
 
           </ul>
