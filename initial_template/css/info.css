@@ -50,6 +50,9 @@
     .info-list > li.selected > a{
         color:#fff;
     }
+    .info-text ul{
+      list-style-type: none;
+    }
     .info-text ul > li{
       font-size:1.2rem;
       text-align:justify;
@@ -57,15 +60,18 @@
 	  .accordion a{
 		   text-decoration: none;
        color: #212121;
-      }
-      
-      .accordion a:active,.accordion a:focus {
-        outline: 0;
-        -moz-outline-style: none;
-        outline-style: none;
-      }
+	  }
     .accordion h4{
       font-weight: bold;
+    }
+    .sitemap-title{
+      color: #FA6826;
+      padding-bottom: 10px;
+    }
+    .sitemap-links a{
+      text-decoration: none;
+      font-weight: bold;
+      color: #212121;
     }
 @media(min-width:768px){
     .info-list{
